@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-    <title><%= @page_title or 'Freifunk Node Database' %></title>
+    <title><%= @page_title or APP_CONFIG['settings']['name'] %></title>
     <%= stylesheet_link_tag 'nodes' %>
     <% if self.controller_name == 'map' %><%= map_layers_includes %><% end %>
   </head>
   <body>
     <div id="header">
-      <a href="/" title="Freifunk Node Database"><%=image_tag("blank.png", :height => '100%', :width => '100%', :alt => '', :border => 0) %></a>
+      <a href="/" title="<%= APP_CONFIG['settings']['name'] %>"><%=image_tag("blank.png", :height => '100%', :width => '100%', :alt => '', :border => 0) %></a>
     </div>
     <div id="menubar">
       <div id="leftmenu">

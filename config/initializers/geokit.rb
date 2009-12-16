@@ -1,9 +1,9 @@
 if defined? Geokit
 
-  Geokit::default_units = :kms
+  Geokit::default_units = APP_CONFIG['geokit']['default_units'].to_sym
   
-  Geokit::Geocoders::google = 'ABQIAAAAJASmpFszQOsjK5L8rvGYDxTtQ2tT4vl28MJs0fc7NfWJJsJDXRQk27EQpwP5K-3Npf2DGdwiqCofsQ'
-  Geokit::Geocoders::yahoo = 'PqF3LP3V34FA.K1dnwXxjM2AwIdOMqHiq_ezi7FVKNYCweyDQoUgP9eiJwlpXeXCjvDdsFRCsxYt'
+  Geokit::Geocoders::google = APP_CONFIG['geokit']['google_key']
+  Geokit::Geocoders::yahoo = APP_CONFIG['geokit']['yahoo_key']
   
   Geokit::Geocoders::provider_order = [ :google, :yahoo ]
   
