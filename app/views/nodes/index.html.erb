@@ -1,0 +1,28 @@
+<h1>Nodes</h1>
+<table>
+  <thead>
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Address
+      </th>
+      <th>
+        Subnet
+      </th>
+      <th>
+        IP Address
+      </th>
+      <th>
+        Owner
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render :partial => 'node', :collection => @nodes %>
+  </tbody>
+</table>
+<div id="toolbar">
+  <%= link_to 'Add node', new_node_path %>
+</div>

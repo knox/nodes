@@ -1,0 +1,16 @@
+<tr class="<%= cycle('odd', 'even') %>">
+  <td>
+    <%= link_to h(subnet.name), subnet %>
+  </td>
+  <td>
+    <%= h network_address(subnet) %>
+  </td>
+  <td>
+    <%= h subnet.nodes.count %>
+  </td>
+  <% if self.controller_name != "users" %>
+  <td>
+    <%= link_to h(subnet.owner.login), subnet.owner %>
+  </td>
+  <% end %>
+</tr>

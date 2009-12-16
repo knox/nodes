@@ -1,0 +1,21 @@
+<tr class="<%= cycle('odd', 'even') %>">
+  <td>
+    <%= link_to h(node.name), node %>
+  </td>
+  <td>
+    <%= h [ node.street, node.city ].compact.join(", ") %>
+  </td>
+  <% if self.controller_name != "subnets" %>
+  <td>
+    <%= link_to h(node.subnet.name), node.subnet %>
+  </td>
+  <% end %>
+  <td>
+    <%= h node.ip_address %>
+  </td>
+  <% if self.controller_name == "nodes" %>
+  <td>
+    <%= link_to h(node.owner.login), node.owner %>
+  </td>
+  <% end %>
+</tr>

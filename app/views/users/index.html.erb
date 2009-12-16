@@ -1,0 +1,38 @@
+<h1>Users</h1>
+<table>
+  <thead>
+    <tr>
+      <th>
+        Username
+      </th>
+      <th>
+        Email
+      </th>
+      <th>
+        Registration Date
+      </th>
+      <th>
+        Subnets
+      </th>
+      <th>
+        Nodes
+      </th>
+      <% if logged_in? and current_user.has_role?('admin') %>
+      <th>
+        Enabled?
+      </th>
+      <th>
+        Roles
+      </th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render :partial => 'user', :collection => @users %>
+  </tbody>
+</table>
+<div id="toolbar">
+  <% if logged_in? and current_user.has_role?('administrator') %>
+  <%= link_to 'New user', new_user_path %>
+  <% end %>
+</div>

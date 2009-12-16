@@ -1,0 +1,54 @@
+<h2><%=h @subnet.name %></h2>
+<%= simple_format(h(@subnet.description)) %>
+<h3>Network</h3>
+<p>
+  <label>
+    Address:
+  </label>
+  <%=h network_address(@subnet) %>
+  <br/>
+  <label>
+    Max Nodes:
+  </label>
+  <%=h @subnet.max_hosts %>
+  <br/>
+</p>
+
+<h3>Owner</h3>
+<p>
+  <label>
+    Username:
+  </label>
+  <%= link_to h(@subnet.owner.login), @subnet.owner %>
+  <br/>
+</p>
+
+<h3>Nodes</h3>
+<% if @subnet.nodes.count == 0 %>
+  <p>No Nodes registered yet.</p>
+<% else %>
+<table>
+  <thead>
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Address
+      </th>
+      <th>
+        IP Address
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render :partial => 'nodes/node', :collection => @subnet.nodes %>
+  </tbody>
+</table>
+<% end %>
+
+<div id="toolbar">
+  <% if logged_in? && (current_user.owns_subnet?(@subnet) || current_user.has_role?('admin')) %>
+  <%= link_to 'Edit', edit_subnet_path(@subnet) %>&nbsp;| <%= link_to 'Destroy', @subnet, :confirm => 'Are you sure?', :method => :delete %>
+  <% end %>
+</div>

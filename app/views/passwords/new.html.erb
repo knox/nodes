@@ -1,0 +1,15 @@
+<h1>Forgot Password?</h1>
+<% form_tag url_for(:action => 'create') do %>
+<fieldset>
+  <p>
+    What is the email address used to create your account?
+  </p>
+  <%= text_field_tag :email, "", :size => 50 %>
+  <br/>
+</fieldset>
+<br/>
+<%= submit_tag 'Reset Password' %>
+<% end %>
+<div id="toolbar">
+  <%= link_to 'Log In', new_session_path %>&nbsp;| <%= link_to "Sign Up", new_user_path %>
+</div>

@@ -1,0 +1,25 @@
+<h1>Subnets</h1>
+<table>
+  <thead>
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Network Address
+      </th>
+      <th>
+        Nodes
+      </th>
+      <th>
+        Owner
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render :partial => 'subnet', :collection => @subnets %>
+  </tbody>
+</table>
+<div id="toolbar">
+  <%= link_to 'Add Subnet', new_subnet_path %>
+</div>

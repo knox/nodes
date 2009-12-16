@@ -1,0 +1,10 @@
+log/*.log
+tmp/**/*
+config/database.yml
+config/config.yml
+doc/api
+doc/app
+doc/plugins
+config/initializers/site_keys.rb
+*~
+db/*.sqlite3

@@ -1,0 +1,12 @@
+[submodule "vendor/plugins/restful-authentication"]
+	path = vendor/plugins/restful-authentication
+	url = http://github.com/technoweenie/restful-authentication.git
+[submodule "vendor/plugins/role_requirement"]
+	path = vendor/plugins/role_requirement
+	url = http://github.com/timcharper/role_requirement.git
+[submodule "vendor/plugins/geokit-rails"]
+	path = vendor/plugins/geokit-rails
+	url = http://github.com/andre/geokit-rails.git
+[submodule "vendor/plugins/map_layers"]
+	path = vendor/plugins/map_layers
+	url = http://github.com/pka/map_layers.git

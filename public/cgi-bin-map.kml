@@ -1,0 +1,122 @@
+#!/bin/sh
+
+echo "Content-type: application/vnd.google-earth.kml+xml"
+echo
+
+first=yes
+
+PLink()
+{
+	test "yes" = "$first" && {
+		cat<<EOF
+</Folder>
+<Folder>
+<name>Links</name>
+<open>0</open>
+EOF
+		first=no
+	}
+	LS=#weak
+	test ${5%.*} -lt 5 2>&- && LS=#medium
+	test ${5%.*} -lt 2 2>&- && LS=#strong
+	test -n "$6" && test -n "$8" && cat<<EOF
+<Placemark>
+<name>$1 - $2 ($5)</name>
+<styleUrl>$LS</styleUrl>
+<MultiGeometry>
+<LineString>
+<coordinates>
+$7,$6,0 $9,$8,0
+</coordinates>
+</LineString>
+</MultiGeometry>
+</Placemark>
+EOF
+}
+
+Node()
+{
+	cat<<EOF
+<Placemark>
+<name>$1</name>
+<description>Name: $6, Current inet: $5</description>
+<LookAt>
+<longitude>$3</longitude>
+<latitude>$2</latitude>
+<altitude>0</altitude>
+<range>100</range>
+<tilt>0</tilt>
+<heading>0</heading>
+</LookAt>
+<styleUrl>$(test "1" = "$4" && echo "#hna" || echo "#node")</styleUrl>
+<Point>
+<coordinates>$3,$2,0</coordinates>
+</Point>
+</Placemark>
+EOF
+}
+
+Self()
+{
+	HNA=mapfiles/kml/pal4/icon25.png
+	NODE=mapfiles/kml/pal3/icon61.png
+	SERVER_ADDR=maps.google.com
+	cat<<EOF
+<kml xmlns="http://earth.google.com/kml/2.1">
+<Document>
+<name>Freifunk Mesh</name>
+<Style id="hna">
+<IconStyle>
+<color>bfffffff</color>
+<Icon>
+<href>http://$SERVER_ADDR/$HNA</href>
+</Icon>
+</IconStyle>
+<ListStyle>
+</ListStyle>
+</Style>
+<Style id="node">
+<IconStyle>
+<color>bfffffff</color>
+<Icon>
+<href>http://$SERVER_ADDR/$NODE</href>
+</Icon>
+</IconStyle>
+</Style>
+<Style id="strong">
+<LineStyle>
+<color>e0ff9999</color>
+<width>3</width>
+</LineStyle>
+</Style>
+<Style id="medium">
+<LineStyle>
+<color>e066cc66</color>
+<width>2</width>
+</LineStyle>
+</Style>
+<Style id="weak">
+<LineStyle>
+<color>e0333399</color>
+<width>1</width>
+</LineStyle>
+</Style>
+<Folder>
+<name>Nodes</name>
+<open>0</open>
+EOF
+	Node $*
+}
+
+# ignored types: Link, Mid (and SNode - from berlin-mapaddon.ipk)
+eval $(sed -ne"
+/^P/s/^PLink(\('[0-9a-f:\.]\+'\),\('[0-9a-f:\.]\+'\),\([0-9]\+\.[0-9]\+\),\([0-9]\+\.[0-9]\+\),\([0-9]\+\.[0-9]\+\),\([-0-9]\+\.[0-9]\+\),\([-0-9]\+\.[0-9]\+\),[01],\([-0-9]\+\.[0-9]\+\),\([-0-9]\+\.[0-9]\+\),[01]);\$/PLink \1 \2 \3 \4 \5 \6 \7 \8 \9\;/p
+/^N/s/^Node(\('[0-9a-f:\.]\+'\),\([-0-9]\+\.[0-9]\+\),\([-0-9]\+\.[0-9]\+\),\([01]\),\('[0-9a-f:\.]\+'\),\('[-a-zA-Z0-9_\.]*'\));\$/Node \1 \2 \3 \4 \5 \6\;/p
+/^S/s/^Self(\('[0-9a-f:\.]\+'\),\([-0-9]\+\.[0-9]\+\),\([-0-9]\+\.[0-9]\+\),\([01]\),\('[0-9a-f:\.]\+'\),\('[-a-zA-Z0-9_\.]*'\));\$/Self \1 \2 \3 \4 \5 \6\;/p
+" /var/run/latlon.js)
+
+test "yes" != "$first" && echo "</Folder>"
+cat<<EOF
+</Document>
+</kml>
+EOF

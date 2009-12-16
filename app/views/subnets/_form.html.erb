@@ -1,0 +1,18 @@
+<% form_for(@subnet) do |f| %>
+<%= f.error_messages %>
+<fieldset>
+  <legend>General</legend>
+<%= f.label :name %><%= f.text_field :name %>
+<br/>
+<%= f.label :description %><%= f.text_area :description %>
+</fieldset>
+<fieldset>
+  <legend>Network</legend>
+<%= f.label :ip_address %><%= f.text_field :ip_address %>
+<br/>
+<%= f.label :prefix_length %><%= f.text_field :prefix_length %>
+</fieldset>
+<br/>
+<%= f.hidden_field :owner, :value => current_user.id %>
+<%= f.submit 'Save' %>
+<% end %>

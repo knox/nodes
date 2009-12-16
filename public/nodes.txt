@@ -1,0 +1,57 @@
+point	title	description	icon	iconSize	iconOffset
+52.38614299999999702,9.72206399999999960	None	IP:<a href="http://10.2.0.1/">10.2.0.1</a><br><br>Info:<a href='http://db.freifunk-hannover.de/uptime/nodes/node/40/'>http://db.freifunk-hannover.de/uptime/nodes/node/40/</a>	/images/unknown.jpg	16,16	-8,-8
+point	title	description	icon	iconSize	iconOffset
+52.38613000000000142,9.72176299999999927	None	IP:<a href="http://10.2.1.1/">10.2.1.1</a><br><br>Info:<a href='http://db.freifunk-hannover.de/uptime/nodes/node/22/'>http://db.freifunk-hannover.de/uptime/nodes/node/22/</a>	/images/works.jpg	16,16	-8,-8
+point	title	description	icon	iconSize	iconOffset
+52.38613999999999749,9.72196199999999955	None	IP:<a href="http://10.2.2.1/">10.2.2.1</a><br><br>Info:<a href='http://db.freifunk-hannover.de/uptime/nodes/node/37/'>http://db.freifunk-hannover.de/uptime/nodes/node/37/</a>	/images/unknown.jpg	16,16	-8,-8
+point	title	description	icon	iconSize	iconOffset
+52.38810000000000144,9.71813700000000047	None	IP:<a href="http://10.2.9.130/">10.2.9.130</a><br><br>Info:<a href='http://db.freifunk-hannover.de/uptime/nodes/node/3/'>http://db.freifunk-hannover.de/uptime/nodes/node/3/</a>	/images/works.jpg	16,16	-8,-8
+point	title	description	icon	iconSize	iconOffset
+52.38821222613621842,9.71753597259521484	None	IP:<a href="http://10.2.9.225/">10.2.9.225</a><br><br>Info:<a href='http://db.freifunk-hannover.de/uptime/nodes/node/5/'>http://db.freifunk-hannover.de/uptime/nodes/node/5/</a>	/images/works.jpg	16,16	-8,-8
+point	title	description	icon	iconSize	iconOffset
+52.37720973493733823,9.70572566982809803	AP79	IP:<a href="http://10.2.18.1/">10.2.18.1</a><br><br>Info:<a href='http://db.freifunk-hannover.de/uptime/nodes/node/60/'>http://db.freifunk-hannover.de/uptime/nodes/node/60/</a>	/images/works.jpg	16,16	-8,-8
+point	title	description	icon	iconSize	iconOffset
+52.38696548894940008,9.71848869310633745	Unknown node	IP:<a href="http://10.2.19.129/">10.2.19.129</a><br><br>Info:<a href='http://db.freifunk-hannover.de/uptime/nodes/node/62/'>http://db.freifunk-hannover.de/uptime/nodes/node/62/</a>	/images/works.jpg	16,16	-8,-8
+point	title	description	icon	iconSize	iconOffset
+52.37722283399151735,9.70571494099203846	AP37	IP:<a href="http://10.2.25.1/">10.2.25.1</a><br><br>Info:<a href='http://db.freifunk-hannover.de/uptime/nodes/node/19/'>http://db.freifunk-hannover.de/uptime/nodes/node/19/</a>	/images/works.jpg	16,16	-8,-8
+point	title	description	icon	iconSize	iconOffset
+52.37651000000000323,9.70715000000000039	None	IP:<a href="http://10.2.42.1/">10.2.42.1</a><br><br>Info:<a href='http://db.freifunk-hannover.de/uptime/nodes/node/9/'>http://db.freifunk-hannover.de/uptime/nodes/node/9/</a>	/images/works.jpg	16,16	-8,-8
+point	title	description	icon	iconSize	iconOffset
+52.37606999999999857,9.70674299999999945	None	IP:<a href="http://10.2.42.129/">10.2.42.129</a><br><br>Info:<a href='http://db.freifunk-hannover.de/uptime/nodes/node/8/'>http://db.freifunk-hannover.de/uptime/nodes/node/8/</a>	/images/works.jpg	16,16	-8,-8
+point	title	description	icon	iconSize	iconOffset
+52.45306726869390701,9.76454168558120728	Unknown node	IP:<a href="http://10.2.45.1/">10.2.45.1</a><br><br>Info:<a href='http://db.freifunk-hannover.de/uptime/nodes/node/323/'>http://db.freifunk-hannover.de/uptime/nodes/node/323/</a>	/images/test.jpg	16,16	-8,-8
+point	title	description	icon	iconSize	iconOffset
+52.38568200000000274,9.72052900000000086	OLSR-GW64-1	IP:<a href="http://10.2.64.1/">10.2.64.1</a><br><br>Info:<a href='http://db.freifunk-hannover.de/uptime/nodes/node/42/'>http://db.freifunk-hannover.de/uptime/nodes/node/42/</a>	/images/works.jpg	16,16	-8,-8
+point	title	description	icon	iconSize	iconOffset
+52.38571999999999917,9.72048999999999985	OLSR-GW64-2	IP:<a href="http://10.2.64.2/">10.2.64.2</a><br><br>Info:<a href='http://db.freifunk-hannover.de/uptime/nodes/node/407/'>http://db.freifunk-hannover.de/uptime/nodes/node/407/</a>	/images/works.jpg	16,16	-8,-8
+point	title	description	icon	iconSize	iconOffset
+52.40234196089059537,9.79027211666107178	klee01	IP:<a href="http://10.2.75.1/">10.2.75.1</a><br><br>Info:<a href='http://db.freifunk-hannover.de/uptime/nodes/node/204/'>http://db.freifunk-hannover.de/uptime/nodes/node/204/</a>	/images/works.jpg	16,16	-8,-8
+point	title	description	icon	iconSize	iconOffset
+52.40227322993726489,9.79034990072250366	klee02	IP:<a href="http://10.2.75.2/">10.2.75.2</a><br><br>Info:<a href='http://db.freifunk-hannover.de/uptime/nodes/node/205/'>http://db.freifunk-hannover.de/uptime/nodes/node/205/</a>	/images/works.jpg	16,16	-8,-8
+point	title	description	icon	iconSize	iconOffset
+52.40239252715647211,9.79040139912740415	klee03	IP:<a href="http://10.2.75.4/">10.2.75.4</a><br><br>Info:<a href='http://db.freifunk-hannover.de/uptime/nodes/node/345/'>http://db.freifunk-hannover.de/uptime/nodes/node/345/</a>	/images/test.jpg	16,16	-8,-8
+point	title	description	icon	iconSize	iconOffset
+52.33476085208817352,9.76163578026898904	Unknown node	IP:<a href="http://10.2.82.1/">10.2.82.1</a><br><br>Info:<a href='http://db.freifunk-hannover.de/uptime/nodes/node/351/'>http://db.freifunk-hannover.de/uptime/nodes/node/351/</a>	/images/works.jpg	16,16	-8,-8
+point	title	description	icon	iconSize	iconOffset
+52.33499686105071191,9.76094913476117654	Unknown node	IP:<a href="http://10.2.88.1/">10.2.88.1</a><br><br>Info:<a href='http://db.freifunk-hannover.de/uptime/nodes/node/144/'>http://db.freifunk-hannover.de/uptime/nodes/node/144/</a>	/images/works.jpg	16,16	-8,-8
+point	title	description	icon	iconSize	iconOffset
+52.38563889999999645,9.72108330000000009	10-2-107-129	IP:<a href="http://10.2.107.129/">10.2.107.129</a><br><br>Info:<a href='http://db.freifunk-hannover.de/uptime/nodes/node/341/'>http://db.freifunk-hannover.de/uptime/nodes/node/341/</a>	/images/works.jpg	16,16	-8,-8
+point	title	description	icon	iconSize	iconOffset
+52.38890105911369233,9.73879623386892490	Unknown node	IP:<a href="http://10.2.128.1/">10.2.128.1</a><br><br>Info:<a href='http://db.freifunk-hannover.de/uptime/nodes/node/290/'>http://db.freifunk-hannover.de/uptime/nodes/node/290/</a>	/images/works.jpg	16,16	-8,-8
+point	title	description	icon	iconSize	iconOffset
+52.38890105911369233,9.73879623386892490	Unknown node	IP:<a href="http://10.2.128.2/">10.2.128.2</a><br><br>Info:<a href='http://db.freifunk-hannover.de/uptime/nodes/node/291/'>http://db.freifunk-hannover.de/uptime/nodes/node/291/</a>	/images/test.jpg	16,16	-8,-8
+point	title	description	icon	iconSize	iconOffset
+52.31707724966806694,9.92942619322093378	ap24249	IP:<a href="http://10.2.242.49/">10.2.242.49</a><br><br>Info:<a href='http://db.freifunk-hannover.de/uptime/nodes/node/384/'>http://db.freifunk-hannover.de/uptime/nodes/node/384/</a>	/images/works.jpg	16,16	-8,-8
+point	title	description	icon	iconSize	iconOffset
+52.31702445425116110,9.92934679981772206	ap24281	IP:<a href="http://10.2.242.81/">10.2.242.81</a><br><br>Info:<a href='http://db.freifunk-hannover.de/uptime/nodes/node/332/'>http://db.freifunk-hannover.de/uptime/nodes/node/332/</a>	/images/works.jpg	16,16	-8,-8
+point	title	description	icon	iconSize	iconOffset
+52.30870099767469128,9.97151112553183339	gw242145	IP:<a href="http://10.2.242.145/">10.2.242.145</a><br><br>Info:<a href='http://db.freifunk-hannover.de/uptime/nodes/node/347/'>http://db.freifunk-hannover.de/uptime/nodes/node/347/</a>	/images/works.jpg	16,16	-8,-8
+point	title	description	icon	iconSize	iconOffset
+52.39735541598800239,10.05330026149749756	ap2451	IP:<a href="http://10.2.245.1/">10.2.245.1</a><br><br>Info:<a href='http://db.freifunk-hannover.de/uptime/nodes/node/304/'>http://db.freifunk-hannover.de/uptime/nodes/node/304/</a>	/images/works.jpg	16,16	-8,-8
+point	title	description	icon	iconSize	iconOffset
+52.22498699999999872,9.84629800000000088	blabla	IP:<a href="http://10.2.251.1/">10.2.251.1</a><br><br>Info:<a href='http://db.freifunk-hannover.de/uptime/nodes/node/87/'>http://db.freifunk-hannover.de/uptime/nodes/node/87/</a>	/images/works.jpg	16,16	-8,-8
+point	title	description	icon	iconSize	iconOffset
+52.38818537991381419,9.71794581409994862	SRV1	IP:<a href="http://10.2.254.1/">10.2.254.1</a><br><br>Info:<a href='http://db.freifunk-hannover.de/uptime/nodes/node/369/'>http://db.freifunk-hannover.de/uptime/nodes/node/369/</a>	/images/works.jpg	16,16	-8,-8
+point	title	description	icon	iconSize	iconOffset
+52.38,9.712	None	IP:<a href="http://10.2.255.1/">10.2.255.1</a><br><br>Info:<a href='http://db.freifunk-hannover.de/uptime/nodes/node/20/'>http://db.freifunk-hannover.de/uptime/nodes/node/20/</a>	/images/vpn.jpg	16,16	-8,-8
+

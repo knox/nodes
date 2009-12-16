@@ -1,0 +1,270 @@
+html {
+  height: 100%
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font: .80em / 1.05em 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+  color: #333; /* dark grey */
+}
+
+a {
+  color: #2153B0;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #173A7B;
+  text-decoration: underline;
+}
+
+a:active {
+  color: #666666;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #666666;
+}
+
+h1 {
+  margin: 0px 0px 10px 0px;
+  font-weight: bold;
+  padding-left: 10px;
+  font-size: 1.8em;
+  color: #1860AC;
+  border-bottom: 1px dotted #333333;
+  line-height: 1.8em;
+  padding-bottom: 0.1em;
+}
+
+h2 {
+  margin: 0px 0px 5px 0px;
+  font-weight: bold;
+  padding-left: 10px;
+  font-size: 1.4em;
+  border-bottom: 1px dotted #333333;
+  line-height: 1.5em;
+  padding-bottom: 0.2em;
+}
+
+h3 {
+  margin: 5px 0px 5px 0px;
+  font-weight: bold;
+  padding-left: 10px;
+  font-size: 1.2em;
+  line-height: 1.3em;
+  border-bottom: 1px dotted #cccccc;
+}
+
+table {
+  width: 100%;
+  border: 1px solid #BBBBBB;
+}
+
+table td, table th {
+  border-right: 1px solid #999;
+  padding: 2px;
+  font-weight: normal;
+}
+
+table thead td, table thead th {
+  background: #2153B0;
+  color: #FFFFFF;
+  text-align: left;
+}
+
+table thead th a, table thead th a:hover, table thead th a:active, table thead th a:visited {
+  color: #FFFFFF;
+}
+
+tr.odd {
+  background: #F9F9F9;
+}
+
+tr.even {
+  background: #FFFFFF;
+}
+
+fieldset {
+  border: 1px solid #BBBBBB;
+  padding: 10px;
+  margin: 0;
+}
+
+legend {
+  font-size: 1.1em;
+}
+
+form label {
+  display: block;
+  float: left;
+  width: 100px;
+  text-align: right;
+  padding-right: 1em;
+  padding-bottom: 1em;
+}
+
+form input, textarea, select, checkbox, button {
+  background-color: #F9F9F9;
+  color: #000000;
+  border: 1px solid #A0A0A0;
+}
+
+form textarea {
+  min-width: 200px;
+  width: 60%;
+  height: 100px;
+}
+
+/* TODO */
+form small {
+  margin-left: 114px;
+}
+
+br {
+  clear: left;
+}
+
+#header {
+  height: 102px;
+  background-image: url("/images/ffh_header.png");
+  background-repeat: no-repeat;
+  background-position: -50px 0px;
+}
+
+#menubar {
+  top: 102px;
+  left: 0px;
+  right: 0px;
+}
+
+#leftmenu {
+   position: absolute;
+   top: 102px;
+  left: 0px;
+  padding: 4px 4px 4px 10px;
+  background-color: #F9F9F9;
+  border-bottom: 1px dotted #A0A0A0;
+  border-right: 1px dotted #A0A0A0;
+  color: #777;
+}
+
+#notice {
+  font-weight: bold;
+  color: #EE0404;
+  border: 1px solid;
+}
+
+#rightmenu {
+   position: absolute;
+   top: 102px;
+  right: 0px;
+  padding: 4px 10px 4px 4px;
+  background-color: #F9F9F9;
+  border-bottom: 1px dotted #A0A0A0;
+  border-left: 1px dotted #A0A0A0;
+  color: #777;
+}
+
+ul.navi {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
+ul.navi li {
+  display: inline;
+  list-style-type: none;
+  margin: 0;
+  padding: 4px;
+}
+
+ul.navi a {
+  text-decoration: none;
+  color: #2153B0;
+}
+
+#content {
+  margin: 30px 10px 10px 10px;
+  background-color: #FFFFFF;
+  border: 1px solid #EEE;
+  border-bottom: 1px dotted #A0A0A0;
+  border-right: 1px dotted #A0A0A0;
+  padding: 10px 10px 10px 10px;
+}
+
+#content.map {
+  margin: 0;
+  position: absolute;
+  top: 132px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  overflow: hidden;
+}
+
+
+#map {
+  width: 100%;
+  height: 99%;
+  border: 1px solid #BBBBBB;
+}
+
+#toolbar {
+  background-color: #F9F9F9;
+  border-bottom: 1px dotted #A0A0A0;
+  border-right: 1px dotted #A0A0A0;
+  padding: 4px 0px 4px 10px;
+  margin-top: 10px;
+  color: #777;
+  height: 1em;
+}
+
+p label {
+  display: block;
+  float: left;
+  width: 100px;
+  text-align: right;
+  padding-right: 1em;
+  padding-bottom: 0.5em;
+}
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+

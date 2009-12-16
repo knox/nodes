@@ -1,0 +1,7 @@
+<h2>Editing Node</h2>
+
+<%= render :partial => "form" %> 
+
+<div id="toolbar">
+  <%= link_to 'Show', @node %>&nbsp;| <%= link_to 'Destroy', @node, :confirm => 'Are you sure?', :method => :delete %>
+</div>

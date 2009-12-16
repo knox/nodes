@@ -1,0 +1,38 @@
+<% form_for(@node) do |f| %>
+<%= f.error_messages %>
+<fieldset>
+  <legend>
+    General
+  </legend>
+  <%= f.label :name %><%= f.text_field :name %>
+  <br/>
+  <%= f.label :description %><%= f.text_area :description %>
+</fieldset>
+<fieldset>
+  <legend>
+    Location
+  </legend>
+  <%= f.label :street %><%= f.text_field :street %>
+  <br/>
+  <%= f.label :zip %><%= f.text_field :zip %>
+  <br/>
+  <%= f.label :city %><%= f.text_field :city %>
+  <br/>
+  <%= f.label :lat %><%= f.text_field :lat %>
+  <br/>
+  <%= f.label :lng %><%= f.text_field :lng %>
+  <br/>
+  <%= f.label :position %><%= f.text_field :position %>
+</fieldset>
+<fieldset>
+  <legend>
+    Network
+  </legend>
+  <%= f.label :subnet %><%= collection_select :node, :subnet_id, Subnet.all, :id, :name %>
+  <br/>
+  <%= f.label :ip_address %><%= f.text_field :ip_address %>
+</fieldset>
+<br/>
+<%= f.hidden_field :owner, :value => current_user.id %>
+<%= f.submit 'Save' %>
+<% end %>

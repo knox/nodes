@@ -1,0 +1,57 @@
+<h2><%=h @node.name %></h2>
+
+<%= simple_format(h(@node.description)) %>
+
+<h3>Location</h3>
+<p>
+  <label>
+    Street:
+  </label>
+  <%=h @node.street %>
+  <br/>
+  <label>
+    Zip/City:
+  </label>
+  <%=h [ @node.zip, @node.city].compact.join(" ") %>
+  <br/>
+  <label>
+    Geo Location:
+  </label>
+  <%=h @node.lat %>, <%=h @node.lng %>
+  <br/>
+  <label>
+    Position:
+  </label>
+  <%=h @node.position %>
+  <br/>
+</p>
+
+<h3>Network</h3>
+<p>
+  <label>
+    Subnet:
+  </label>
+  <%= link_to h(@node.subnet.name), @node.subnet %>&nbsp;(<%= h(network_address(@node.subnet)) %>)
+  <br/>
+  <label>
+    IP Address:
+  </label>
+  <%=h @node.ip_address %>
+  <br/>
+</p>
+
+<h3>Owner</h3>
+<p>
+  <label>
+    Username:
+  </label>
+  <%= link_to h(@node.owner.login), @node.owner %>
+  <br/>
+</p>
+
+
+<div id="toolbar">
+  <% if logged_in? && (current_user.owns_node?(@node) || current_user.has_role?('admin')) %>
+  <%= link_to 'Edit', edit_node_path(@node) %>&nbsp;| <%= link_to 'Destroy', @node, :confirm => 'Are you sure?', :method => :delete %>
+  <% end %>
+</div>

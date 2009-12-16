@@ -1,0 +1,25 @@
+<h1>Login</h1>
+<% form_tag session_path do %>
+<fieldset>
+  <label for="login">
+    Login
+  </label>
+  <%= text_field_tag 'login' %>
+  <br/>
+  <label for="password">
+    Password
+  </label>
+  <%= password_field_tag 'password' %>
+  <br/>
+  <label for="remember_me">
+    Remember me
+  </label>
+  <%= check_box_tag 'remember_me' %>
+  <br/>
+</fieldset>
+<br/>
+<%= submit_tag 'Log in' %>
+<% end %>
+<div id="toolbar">
+  <%= link_to "Sign Up", new_user_path %>&nbsp;| <%= link_to 'Forgot Password?', forgot_password_path %>
+</div>
