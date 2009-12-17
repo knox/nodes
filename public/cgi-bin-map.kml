@@ -3,7 +3,7 @@
 echo "Content-type: application/vnd.google-earth.kml+xml"
 echo
 
-first=yes
+first="yes"
 
 PLink()
 {
