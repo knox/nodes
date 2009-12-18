@@ -3,18 +3,24 @@
     <%= link_to(h(user.login), user_path(user.id)) %>
   </td>
   <td>
+    <%= h(user.name) %>
+  </td>
+  <td>
     <%= mail_to user.email, user.email, :encode => "javascript" %>
   </td>
   <td>
-    <%= h(user.created_at.to_date.to_s) %>
+    <%= user.created_at.to_date.to_s %>
   </td>
   <td>
-    <%= h(user.subnets.count) %>
+    <%= user.subnets.count %>
   </td>
   <td>
-    <%= h(user.nodes.count) %>
+    <%= user.nodes.count %>
   </td>
   <% if logged_in? and current_user.has_role?('admin') %>
+  <td>
+    <%= user.active? ? 'yes' : 'no' %>
+  </td>
   <td>
     <%= user.enabled ? 'yes' : 'no' %>
     <% unless user == current_user %>
@@ -26,7 +32,10 @@
     <% end %>
   </td>
   <td>
+    <%= user.roles.collect { |role| role != user.roles.last ? "#{role.name}, " : "#{role.name}" } %>
+    <% unless user == current_user %>
     <%= link_to 'edit roles', user_roles_path(user) %>
+    <% end %>
   </td>
   <% end %>
 </tr>

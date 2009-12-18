@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   before_filter :login_required, :only => [:edit, :update, :enable, :destroy]
-  
+  after_filter :store_location, :only => [:index, :show, :new, :edit]
+
   require_role "admin", :for => [:edit, :update, :destroy], :unless => "current_user.id == params[:id].to_i"
   require_role "admin", :for => [:enable]
   
@@ -36,14 +37,14 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
   end
  
   def update
-    @user = User.find(current_user)
+    @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
       flash[:notice] = "User updated"
-      redirect_to :action => 'show', :id => current_user
+      redirect_to :action => 'show', :id => params[:id]
     else
       render :action => 'edit'
     end

@@ -4,6 +4,7 @@ class NodesController < ApplicationController
 
   before_filter :find_node, :only => [:show, :edit, :update, :destroy] 
   before_filter :login_required, :only => [:new, :edit, :update, :create, :destroy]
+  after_filter :store_location, :only => [:index, :show, :new, :edit]
 
   require_role "admin", :for => [:edit, :update, :destroy], :unless => "current_user.owns_node?(params[:id].to_i)"
 

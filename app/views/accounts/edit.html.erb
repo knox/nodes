@@ -1,12 +1,12 @@
 <h2>Change Password</h2>
 <% form_tag url_for(:action => "update") do %>
 <fieldset>
-  <label for="old_password" class="block">
+  <label for="old_password">
     Old Password
   </label>
   <%= password_field_tag 'old_password', @old_password %>
   <br/>
-  <label for="password" class="block">
+  <label for="password">
     New Password
   </label>
   <%= password_field_tag 'password', {} %>
@@ -15,7 +15,7 @@
     Between 4 and 40 characters
   </small>
   <br/>
-  <label for="password_confirmation" class="block">
+  <label for="password_confirmation">
     Confirm new password
   </label>
   <%= password_field_tag 'password_confirmation', {} %>

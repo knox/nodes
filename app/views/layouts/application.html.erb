@@ -47,7 +47,8 @@
         </ul>
       </div>
     </div>
-    <div id="content"<% if self.controller_name == 'map' %> class="map"<%end %>><%= flash[:notice] %>
+    <div id="content"<% if self.controller_name == 'map' %> class="map"<%end %>>
+      <%= flash[:notice] %>
       <%= yield %>
     </div>
   </body>

@@ -3,7 +3,10 @@
   <thead>
     <tr>
       <th>
-        Username
+        Login
+      </th>
+      <th>
+        Name
       </th>
       <th>
         Email
@@ -18,6 +21,7 @@
         Nodes
       </th>
       <% if logged_in? and current_user.has_role?('admin') %>
+      <th>Activated?</th>
       <th>
         Enabled?
       </th>

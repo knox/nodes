@@ -13,7 +13,7 @@ class RolesController < ApplicationController
     unless @user.has_role?(@role.name)
       @user.roles << @role
     end
-    redirect_to :action => 'index'
+    redirect_to :back
   end
  
   def destroy
@@ -22,7 +22,7 @@ class RolesController < ApplicationController
     if @user.has_role?(@role.name)
       @user.roles.delete(@role)
     end
-    redirect_to :action => 'index'
+    redirect_to :back
   end
   
  end

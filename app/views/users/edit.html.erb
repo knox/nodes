@@ -1,7 +1,9 @@
-<h2>Edit Your Account</h2>
+<h2>Edit Account</h2>
 <%= error_messages_for :user %>
 <% form_for :user, :url => user_url(@user), :html => { :method => :put } do |f| %>
 <fieldset>
+  <%= f.label :name %><%= f.text_field :name %>
+  <br/>
   <%= f.label :email %><%= f.text_field :email %>
   <br/>
 </fieldset>

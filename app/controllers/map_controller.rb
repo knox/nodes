@@ -1,5 +1,7 @@
 class MapController < ApplicationController
 
+  after_filter :store_location, :only => [:index]
+
   def index
     
     @lon = params[:lon] || 9.738435

@@ -1,6 +1,7 @@
 class AccountsController < ApplicationController
 
   before_filter :login_required, :except => :show
+  after_filter :store_location, :only => [:edit]
 
   require_role "admin", :for => :update, :unless => "current_user.id == params[:id].to_i"
 

@@ -110,8 +110,53 @@ module RoleRequirementSystem
     
     def access_denied
       if logged_in?
-        render_optional_error_file(401)
-        return false
+				#Original role requirement code
+        #render :nothing => true, :status => 401
+        #return false
+				respond_to do |format|
+					format.html do 
+						flash[:error] = "You don't have permission to complete this action."		
+						domain = "http://#{APP_CONFIG['settings']['domain']}"		
+						wwwdomain = "http://www.#{APP_CONFIG['settings']['domain']}"		
+						case
+						# Checks to see if the call to access_denied is the result of a failed redirect after logging 
+						# in normally (HTTP_REFERER includes one of the paths) or with OpenID (HTTP_REFERER is nil)
+						when (session[:refered_from] && request.env['HTTP_REFERER'] && 
+							(request.env['HTTP_REFERER'].include?("#{APP_CONFIG['settings']['domain']}/session/new" || 
+							"#{APP_CONFIG['settings']['domain']}/login"))), (request.env['HTTP_REFERER'].nil? && 
+							session[:refered_from]) 
+								referer = session[:refered_from]
+						else
+								referer = request.env['HTTP_REFERER']
+						end							
+						case 
+						# Makes sure the referer is a page on your website
+						when (referer[0...(domain.length)] == domain), (referer[0...(wwwdomain.length)] == wwwdomain)
+							# Make sure the current_user has permission to access the referer path
+							if referer[0..10] == "http://www."
+								path = referer[(wwwdomain.length)..(referer.length)]
+							else
+								path = referer[(domain.length)..(referer.length)]
+							end
+							route = ActionController::Routing::Routes.recognize_path(path, {:method => :get})
+							if url_options_authenticate?(:controller => route[:controller], :action => route[:action], 
+								:params => route[:id]) && (route[:controller] != "four_oh_fours")
+								redirect_to(referer)
+							else
+								redirect_to root_path
+							end
+						else
+							redirect_to root_path
+						end
+						session[:refered_from] = nil
+						session[:return_to] = nil
+					end
+	        format.any do
+	          headers["Status"]           = "Unauthorized"
+	          headers["WWW-Authenticate"] = %(Basic realm="Web Password")
+	          render :text => "You don't have permission to complete this action.", :status => '401 Unauthorized'				
+					end
+				end
       else
         super
       end
@@ -119,7 +164,8 @@ module RoleRequirementSystem
     
     def check_roles       
       return access_denied unless self.class.user_authorized_for?(current_user, params, binding)
-      
+      session[:refered_from] = nil
+			session[:return_to] = nil
       true
     end
     

@@ -2,69 +2,59 @@
 class SessionsController < ApplicationController
 
   before_filter :login_required, :only => :destroy
+  before_filter :login_prohibited, :only => [:new, :create]
   
   # render new.rhtml
   def new
   end
 
   def create
-    self.current_user = User.authenticate(params[:login], params[:password])
-    if logged_in?
-      if params[:remember_me] == "1"
-        current_user.remember_me unless current_user.remember_token?
-        cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
-      end
-      redirect_back_or_default('/')
-      flash[:notice] = "Logged in successfully"
-    else
-      render :action => 'new'
-    end
+    logout_keeping_session!
+		password_authentication(params[:login], params[:password])
   end
 
   def destroy
-    self.current_user.forget_me if logged_in?
-    cookies.delete :auth_token
-    reset_session
+    logout_killing_session!
     flash[:notice] = "You have been logged out."
     redirect_back_or_default('/')
   end
 
   protected
   
-  # Updated 2/20/08
   def password_authentication(login, password)
-    user = User.authenticate(login, password)
-    if user == nil 
-      failed_login("Your username or password is incorrect.")
-    elsif user.activated_at.blank?   
-      failed_login("Your account is not active, please check your email for the activation code.")
-    elsif user.enabled == false 
-      failed_login("Your account has been disabled.")
-    else
-      self.current_user = user
-      successful_login
-    end
+    User.authenticate(login, password) do |user, message, item_msg, item_path|
+			(successful_login(user) and return) if user
+			(flash[:error_item] = [item_msg, send(item_path)]) if item_path
+			failed_login(message)
+		end
   end
   
-  private 
-  
+  private
+
+  def successful_login(user)
+    # Protects against session fixation attacks, causes request forgery
+    # protection if user resubmits an earlier form using back
+    # button. Uncomment if you understand the tradeoffs.
+		#
+		# reset_session has been uncommented in the restful_authentication_tutorial app,
+		# which is not the default setting of the restful_authentication plugin
+		# guides.rails.info/securing_rails_applications/security.html#_session_fixation_countermeasures
+		#
+		refered_from = session[:refered_from]
+		return_to = session[:return_to]
+    reset_session
+		session[:refered_from] = refered_from 
+		session[:return_to] = return_to
+    self.current_user = user
+    new_cookie_flag = (params[:remember_me] == "1")
+    handle_remember_cookie! new_cookie_flag
+    redirect_back_or_default('/')
+    flash[:notice] = "Logged in successfully."
+  end
+
   def failed_login(message)
-    flash.now[:error] = message
+    flash.now[:notice] = message
     render :action => 'new'
   end
-  
-  def successful_login
-    if params[:remember_me] == "1"
-      self.current_user.remember_me
-      cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
-    end
-      flash[:notice] = "Logged in successfully"
-      return_to = session[:return_to]
-      if return_to.nil?
-        redirect_to user_path(self.current_user)
-      else
-          redirect_to return_to
-      end
-  end
-  
+
 end

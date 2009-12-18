@@ -1,5 +1,8 @@
 <h2><%=h @user.login %></h2>
 <p>
+  <label>Name:</label>
+  <%= h(@user.name) %>
+  <br />
   <label>E-Mail:</label>
   <%=  mail_to @user.email, @user.email, :encode => "javascript" %>
   <br />

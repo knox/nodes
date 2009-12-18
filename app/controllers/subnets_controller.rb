@@ -2,6 +2,7 @@ class SubnetsController < ApplicationController
 
   before_filter :login_required, :only => [:new, :edit, :update, :create, :destroy]
   before_filter :find_subnet, :only => [:show, :edit, :update, :destroy] 
+  after_filter :store_location, :only => [:index, :show, :new, :edit]
 
   require_role "admin", :for => [:edit, :update, :destroy], :unless => "current_user.owns_subnet?(params[:id].to_i)"
 
