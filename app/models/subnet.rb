@@ -19,6 +19,7 @@ class Subnet < ActiveRecord::Base
     :with => /\A(?:25[0-5]|(?:2[0-4]|1\d|[1-9])?\d)(?:\.(?:25[0-5]|(?:2[0-4]|1\d|[1-9])?\d)){3}\z/,
     :unless => Proc.new { |subnet| subnet.ip_address.blank? }
 
+  validate :valid_subnet, :unless => Proc.new { |subnet| subnet.ip_address.blank? }
   validate :separate_subnet, :unless => Proc.new { |subnet| subnet.ip_address.blank? }
   
   validates_numericality_of :prefix_length, :only_integer => true, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 32, :allow_nil => true
@@ -35,6 +36,10 @@ class Subnet < ActiveRecord::Base
       self.max_hosts = addr.max_hosts
     end
   
+    def valid_subnet
+      errors.add(:ip_address, "is not a valid network address") unless IPAddr.new(ip_address).mask(prefix_length).to_i == IPAddr.new(ip_address).to_i      
+    end
+    
     def separate_subnet
       return if errors.on(:ip_address) or errors.on(:prefix_length)
       addr = IPAddr.new(ip_address).mask(prefix_length)
