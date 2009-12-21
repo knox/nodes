@@ -10,10 +10,10 @@ It's development has just started and therefore most of the features are yet lis
 * User self-signup with E-Mail activation and password reminder
 * Simple role based authorization
 * Map displaying nodes
-** Base Layer from OpenStreetMap.org
-** Main Layer displays data from the node database
-** Additional layer to display data from OLSR nameservice plugin
-** Additional layer to display data from global freifunkmap on layereight.de
+  * Base Layer from OpenStreetMap.org
+  * Main Layer displays data from the node database
+  * Additional layer to display data from OLSR nameservice plugin
+  * Additional layer to display data from global freifunkmap on layereight.de
 
 === Planned Features
 * "Click here to join Freifunk"-Wizard for users with very limited technical knowledge
@@ -32,20 +32,16 @@ It's development has just started and therefore most of the features are yet lis
 
 1. Clone main application
  $ git clone git://github.com/knox/nodes.git
-
 2. Clone plugins
  $ git submodule init
  $ git submodule update
-
 3. Create configuration files to suit your needs
  $ cp config/database.yml.sample config/database.yml
  $ vi config/database.yml
  $ cp config/config.yml.sample config/config.yml
  $ vi config/config.yml
-
 4. Create database, load chema and initialize with the seed data
  $ rake db:setup
-
 5. Generate site key (encrypts user passwords)
  $ rake auth:gen:site_key
 
@@ -68,4 +64,4 @@ Write tests and documentation
 
 Freifunk Node Database is released under the MIT license.
 
-<em>Copyright (c) 2009 Mikolas Bingemer
+Copyright (c) 2009 Mikolas Bingemer
