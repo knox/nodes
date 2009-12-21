@@ -1,4 +1,4 @@
-require 'IPAddr'
+require 'ipaddr'
   
 module IPFoo
   
