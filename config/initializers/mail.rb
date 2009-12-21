@@ -1,5 +1,5 @@
 # Email settings from config.yml
-ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.delivery_method = APP_CONFIG['mail']['method'].blank? ? :smtp : APP_CONFIG['mail']['method'].to_sym
 ActionMailer::Base.smtp_settings = {
   :address => APP_CONFIG['mail']['address']
 }
