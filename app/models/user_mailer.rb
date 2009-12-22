@@ -3,20 +3,20 @@ class UserMailer < ActionMailer::Base
     setup_email(user)
     @subject    += 'Please activate your new account'
   
-    @body[:url]  = "http://localhost:3000/activate/#{user.activation_code}"
+    @body[:url]  = "http://#{APP_CONFIG['settings']['domain']}/activate/#{user.activation_code}"
   
   end
   
   def activation(user)
     setup_email(user)
     @subject    += 'Your account has been activated!'
-    @body[:url]  = "http://localhost:3000/"
+    @body[:url]  = "http://#{APP_CONFIG['settings']['domain']}/"
   end
 
  def forgot_password(user)
     setup_email(user)
     @subject    += 'You have requested to change your password'
-    @body[:url]  = "http://localhost:3000/reset_password/#{user.password_reset_code}" 
+    @body[:url]  = "http://#{APP_CONFIG['settings']['domain']}/reset_password/#{user.password_reset_code}" 
   end
 
   def reset_password(user)
@@ -27,8 +27,8 @@ class UserMailer < ActionMailer::Base
   protected
     def setup_email(user)
       @recipients  = "#{user.email}"
-      @from        = "info@freifunk-hannover.de"
-      @subject     = "[Freifunk Node Database] "
+      @from        = APP_CONFIG['mail']['sender']
+      @subject     = "[#{APP_CONFIG['settings']['name']}] "
       @sent_on     = Time.now
       @body[:user] = user
     end
