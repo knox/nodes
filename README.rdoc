@@ -40,10 +40,10 @@ It's development has just started and therefore most of the features are yet lis
  $ vi config/database.yml
  $ cp config/config.yml.sample config/config.yml
  $ vi config/config.yml
-4. Create database, load chema and initialize with the seed data
- $ rake db:setup
-5. Generate site key (encrypts user passwords)
+4. Generate site key (encrypts user passwords)
  $ rake auth:gen:site_key
+5. Create database, load chema and initialize with the seed data
+ $ rake db:setup
 
 == Todo
 
@@ -60,6 +60,9 @@ Write tests and documentation
 * Role_requirement by Timothy Curtis Harper and Jonathan Barket is released under the MIT License
   http://github.com/timcharper/role_requirement
 
+Most of the authentication and roles authorization is taken from the tutorial by Matthew Solt, released under the MIT License
+ http://github.com/activefx/restful_authentication_tutorial
+ 
 == License
 
 Freifunk Node Database is released under the MIT license.
