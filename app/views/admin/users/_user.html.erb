@@ -1,0 +1,28 @@
+<tr class="<%= cycle('odd', 'even') %>">
+    <td>
+        <%= link_to h(user.login), people_path(user) %>
+    </td>
+    <td>
+        <%= mail_to user.email, user.email, :encode => "javascript" %>
+    </td>
+    <td>
+        <%= user.activated_at.blank? ? 'no' : 'yes' %>
+        <% if user.activated_at.blank? %>
+        <%= link_to('activate', admin_user_path(user), :method => :put) %>
+        <% end %>
+    </td>
+    <td>
+        <%= user.enabled ? 'yes' : 'no' %>
+        <% unless user == current_user %>
+        <% if user.enabled %>
+        <%= link_to('disable', admin_state_path(user), :method => :delete) %>
+        <% else %>
+        <%= link_to('enable', admin_state_path(user), :method => :put) %>
+        <% end %>
+        <% end %>
+    </td>
+    <td>
+        <%= user.roles.collect { |role| role != user.roles.last ? "#{role.name}, " : "#{role.name}" } %>
+        <%= link_to '[edit]', admin_user_roles_path(user) %>
+    </td>
+</tr>

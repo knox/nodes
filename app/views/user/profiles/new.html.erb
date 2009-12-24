@@ -1,0 +1,23 @@
+<h1>Signup</h1>
+<%= error_messages_for :user %>
+<% form_for :user, :url => user_profiles_path do |f| %>
+<fieldset>
+  <%= f.label :login %>
+  <%= f.text_field :login %>
+  <br/>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <br/>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <br/>
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
+  <br/>
+</fieldset>
+<br/>
+<%= f.submit 'Sign up' %>
+<% end %>
+<div id="toolbar">
+  <%= link_to 'Log In', new_session_path %>&nbsp;| <%= link_to 'Forgot Password?', forgot_password_path %>
+</div>

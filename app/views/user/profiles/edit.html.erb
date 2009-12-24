@@ -1,0 +1,15 @@
+<h2>Edit Profile</h2>
+<%= error_messages_for :user %>
+<% form_for :user, :url => user_profile_url(@user), :html => { :method => :put } do |f| %>
+<fieldset>
+  <%= f.label :name %><%= f.text_field :name %>
+  <br/>
+  <%= f.label :email %><%= f.text_field :email %>
+  <br/>
+</fieldset>
+<br/>
+<%= f.submit 'Save' %>
+<% end %>
+<div id="toolbar">
+  <%= link_to 'Show Profile', user_profile_path(@user) %>&nbsp;| <%= link_to 'Change Password', user_profile_password_settings_path(@user) %>
+</div>

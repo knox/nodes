@@ -1,0 +1,26 @@
+<h1>User Profile</h1>
+<p>
+    <label>
+        Login:
+    </label>
+    <%= h(@user.login) %>
+    <br/>
+    <label>
+        Name:
+    </label>
+    <%= h(@user.name) %>
+    <br/>
+    <label>
+        E-Mail:
+    </label>
+    <%= h(@user.email) %>
+    <br/>
+    <label>
+        Registration Date:
+    </label>
+    <%= @user.created_at.to_s(:long) %>
+    <br/>
+</p>
+<div id="toolbar">
+    <%= link_to 'Edit profile', edit_user_profile_path(@user) %>&nbsp;| <%= link_to 'Change password', user_profile_password_settings_path(@user) %>
+</div>

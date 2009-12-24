@@ -1,0 +1,69 @@
+<h2><%=h @user.login %></h2>
+<p>
+  <label>Name:</label>
+  <%= h(@user.name) %>
+  <br />
+  <label>E-Mail:</label>
+  <%=  mail_to @user.email, @user.email, :encode => "javascript" %>
+  <br />
+  <label>Registration Date:</label>
+  <%= @user.created_at.to_s(:long) %>
+  <br />
+</p>
+
+<h3>Subnets</h3>
+<% if @user.subnets.count == 0 %>
+  <p>No Subnets registered yet.</p>
+<% else %>
+<table>
+  <thead>
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Network Address
+      </th>
+      <th>
+        Nodes
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render :partial => 'subnets/subnet', :collection => @user.subnets %>
+  </tbody>
+</table>
+<% end %>
+
+<h3>Nodes</h3>
+<% if @user.nodes.count == 0 %>
+  <p>No Nodes registered yet.</p>
+<% else %>
+<table>
+  <thead>
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Address
+      </th>
+      <th>
+        Subnet
+      </th>
+      <th>
+        IP Address
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render :partial => 'nodes/node', :collection => @user.nodes %>
+  </tbody>
+</table>
+<%end%>
+
+<div id="toolbar">
+<% if logged_in? && (current_user == @user || current_user.has_role?('admin')) %>
+  <%= link_to 'Edit Profile', edit_user_profile_path(@user) %>
+<% end %>
+</div>

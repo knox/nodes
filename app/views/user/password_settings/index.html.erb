@@ -1,0 +1,18 @@
+<h1>Change password</h1>
+
+<% form_tag url_for(:action => 'create') do %>
+  
+		<label for="old_password">Old Password</label>
+  	<%= password_field_tag 'old_password', @old_password %><br />
+
+  	<label for="password">New Password</label>
+  	<%= password_field_tag 'password', {} %>
+  	<br />
+
+  	<label for="password_confirmation">Confirm New Password</label>
+  	<%= password_field_tag 'password_confirmation', {} %><br />
+
+  <%= submit_tag 'Change Password' %>
+<% end %>
+<div id="toolbar"></div>
+

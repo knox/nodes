@@ -1,0 +1,20 @@
+<tr class="<%= cycle('odd', 'even') %>">
+  <td>
+    <%= link_to(h(user.login), people_path(user)) %>
+  </td>
+  <td>
+    <%= h(user.name) %>
+  </td>
+  <td>
+    <%= mail_to user.email, user.email, :encode => "javascript" %>
+  </td>
+  <td>
+    <%= user.created_at.to_date.to_s %>
+  </td>
+  <td>
+    <%= user.subnets.count %>
+  </td>
+  <td>
+    <%= user.nodes.count %>
+  </td>
+</tr>
