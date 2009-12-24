@@ -11,5 +11,9 @@ class ApplicationController < ActionController::Base
   include AuthenticatedSystem
   include RoleRequirementSystem
 
+  # Change to the location of your contact form
+  def contact_site
+    root_path
+  end
 
 end
