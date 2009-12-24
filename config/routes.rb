@@ -1,24 +1,32 @@
 ActionController::Routing::Routes.draw do |map|
-
-  map.signup '/signup', :controller => 'users', :action => 'new'
-  map.login '/login', :controller => 'sessions', :action => 'new'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
-  map.activate '/activate/:id', :controller => 'accounts', :action => 'show'
-  map.forgot_password '/forgot_password', :controller => 'passwords', :action => 'new'
-  map.reset_password '/reset_password/:id', :controller => 'passwords', :action => 'edit'
-  map.change_password '/change_password', :controller => 'accounts', :action => 'edit'
-  
-  #map.resend_activation '/resend_activation', :controller => 'user/activations', :action => 'new'
-  
-  map.resources :roles
+  map.login '/login', :controller => 'sessions', :action => 'new'
+  map.signup '/signup', :controller => 'user/profiles', :action => 'new'
+  map.activate '/activate/:activation_code', :controller => 'user/activations', 
+    :action => 'activate', :activation_code => nil
+  map.forgot_password '/forgot_password', :controller => 'user/passwords', :action => 'new'  
+  map.reset_password '/reset_password/:id', :controller => 'user/passwords', :action => 'edit', :id => nil  
+  map.resend_activation '/resend_activation', :controller => 'user/activations', :action => 'new'
 
-  map.resources :users, :member => { :enable => :put } do |users|
-      users.resource :account
+  map.namespace :admin do |admin|
+    admin.resources :controls
+    admin.resources :mailings
+    admin.resources :states
+    admin.resources :users do |users|
       users.resources :roles
+    end    
   end
   
-  map.resource :session
-  map.resource :password
+  map.namespace :user do |user|
+    user.resources :activations
+    user.resources :passwords
+    user.resources :profiles do |profiles|
+      profiles.resources :password_settings
+    end
+  end    
+
+  map.resource  :session
+  map.resources :people, :singular => 'people'
 
   map.resources :subnets #, :has_many => :nodes
   map.resources :nodes, :requirements => {:id => /[0-9]+/} 

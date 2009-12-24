@@ -53,6 +53,8 @@ class SessionsController < ApplicationController
   end
 
   def failed_login(message)
+    @login             = params[:login]
+    @remember_me       = params[:remember_me]
     flash.now[:notice] = message
     render :action => 'new'
   end

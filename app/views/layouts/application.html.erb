@@ -14,34 +14,42 @@
       <div id="leftmenu">
         <ul class="navi">
           <li>
-            <%= link_to "Subnets", subnets_path %>
+            <%= link_to 'People', '/people' %>
           </li>
           <li>
-            <%= link_to "Nodes", nodes_path %>
+            <%= link_to 'Subnets', subnets_path %>
           </li>
           <li>
-            <%= link_to 'Users', users_path %>
+            <%= link_to 'Nodes', nodes_path %>
           </li>
           <li>
-            <%= link_to "Map", map_path %>
+            <%= link_to 'Map', map_path %>
           </li>
+          <% if_admin? do %>
+          <li>
+              <%= link_to 'Admin', admin_controls_path %>
+          </li>
+          <% end %>
         </ul>
       </div>
       <div id="rightmenu">
         <ul class="navi">
           <% if logged_in? %>
           <li>
-            Logged in as: <%= link_to h(current_user.login.capitalize), user_path(current_user) %>
+            Logged in as: <%= link_to_current_user :content_method => :login %>
           </li>
+		  <li>
+		  	<%= link_to 'My Account', user_profile_path(current_user) %>
+		  </li>
           <li>
-            <%= link_to 'Log Out', logout_url %>
+            <%= link_to 'Log Out', logout_path %>
           </li>
           <% else %>
           <li>
-            <%= link_to 'Log In', new_session_path %>
+            <%= link_to 'Log In', login_path %>
           </li>
           <li>
-            <%= link_to 'Sign Up', new_user_path %>
+            <%= link_to 'Sign Up', signup_path %>
           </li>
           <% end %>
         </ul>

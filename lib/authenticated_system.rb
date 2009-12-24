@@ -6,7 +6,7 @@ module AuthenticatedSystem
     !!current_user
   end
   
-  # Accesses the current user from the session. 
+  # Accesses the current user from the session.
   # Future calls avoid the database because nil is not equal to false.
   def current_user
     @current_user ||= (login_from_session || login_from_basic_auth || login_from_cookie) unless @current_user == false
@@ -30,7 +30,8 @@ module AuthenticatedSystem
   #  def authorized?
   #    current_user.login != "bob"
   #  end
-  def authorized?
+  #
+  def authorized?(action = action_name, resource = nil)
     logged_in? && current_user.enabled?
   end
   
@@ -72,7 +73,7 @@ module AuthenticatedSystem
       format.html do
         store_location
         flash[:error] = "You must be logged in to access this feature."
-        redirect_to new_session_path
+        redirect_to login_path
       end
       format.any do
         request_http_basic_authentication 'Web Password'

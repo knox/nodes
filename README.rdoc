@@ -7,13 +7,13 @@ It's development has just started and therefore most of the features are yet lis
 === Features
 * IP Address validation to ensure unique, separate addresses
 * Automatic geo location lookup for node based on given postal address
-* User self-signup with E-Mail activation and password reminder
-* Simple role based authorization
 * Map displaying nodes
   * Base Layer from OpenStreetMap.org
   * Main Layer displays data from the node database
   * Additional layer to display data from OLSR nameservice plugin
   * Additional layer to display data from global freifunkmap on layereight.de
+* User self-signup with E-Mail activation and password reminder
+* Simple role based authorization
 
 === Planned Features
 * "Click here to join Freifunk"-Wizard for users with very limited technical knowledge
@@ -23,7 +23,6 @@ It's development has just started and therefore most of the features are yet lis
 * Tags (acts_as_taggable)
 * Extend user profiles, e.g. avatar, jabber, etc.
 * Polish geo location lookup
-* Polish roles and user administration
 * Mass mailer for admin
 * Enrich map layer
 * Add search function to map
@@ -60,7 +59,12 @@ Write tests and documentation
 * Role_requirement by Timothy Curtis Harper and Jonathan Barket is released under the MIT License
   http://github.com/timcharper/role_requirement
 
-Most of the authentication and roles authorization is taken from the tutorial by Matthew Solt, released under the MIT License
+== References
+
+This application is inspired by FFSomething
+https://dev.leipzig.freifunk.net/trac/wiki/FFSomething
+
+Most of the authentication and authorization stuff has been taken from the nice tutorial by Matthew Solt, released under the MIT License
  http://github.com/activefx/restful_authentication_tutorial
  
 == License

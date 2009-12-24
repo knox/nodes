@@ -19,7 +19,7 @@
   <label>
     Login:
   </label>
-  <%= link_to h(@subnet.owner.login), @subnet.owner %>
+  <%= link_to h(@subnet.owner.login), people_path(@subnet.owner) %>
   <br/>
 </p>
 

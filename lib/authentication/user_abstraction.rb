@@ -74,7 +74,7 @@ module Authentication
           nil and return unless (u && u.authenticated?(password))
         case
         when !u.active?
-          yield nil, "Your account has not been activated, please check your email or %s.", "request a new activation         code", "resend_activation_path"
+          yield nil, "Your account has not been activated, please check your email or %s.", "request a new activation code", "resend_activation_path"
         when !u.enabled?
           yield nil, "Your account has been disabled, please %s.", "contact the administrator", "login_path"
         else
@@ -125,9 +125,9 @@ module Authentication
     		write_attribute :email, (value ? value.downcase : nil)
   		end
 
-      #def to_param
-      #  login
-      #end
+      def to_param
+        login
+      end
 
 		  def has_role?(role_in_question)
 		    @_list ||= self.roles.collect(&:name)

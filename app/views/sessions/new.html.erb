@@ -1,25 +1,19 @@
 <h1>Login</h1>
 <% form_tag session_path do %>
 <fieldset>
-  <label for="login">
-    Login
-  </label>
-  <%= text_field_tag 'login' %>
+  <%= label_tag 'login' %>
+  <%= text_field_tag 'login', @login %>
   <br/>
-  <label for="password">
-    Password
-  </label>
-  <%= password_field_tag 'password' %>
+  <%= label_tag 'password' %>
+  <%= password_field_tag 'password', nil %>
   <br/>
-  <label for="remember_me">
-    Remember me
-  </label>
-  <%= check_box_tag 'remember_me' %>
+  <%= label_tag 'remember_me', 'Remember me' %>
+  <%= check_box_tag 'remember_me', @remember_me %>
   <br/>
 </fieldset>
 <br/>
-<%= submit_tag 'Log in' %>
+<%= submit_tag 'Log in', :disable_with => "Signing in&hellip;" %>
 <% end %>
 <div id="toolbar">
-  <%= link_to "Sign Up", new_user_path %>&nbsp;| <%= link_to 'Forgot Password?', forgot_password_path %>
+  <%= link_to "Sign Up", signup_path %>&nbsp;| <%= link_to 'Forgot Password?', forgot_password_path %>
 </div>

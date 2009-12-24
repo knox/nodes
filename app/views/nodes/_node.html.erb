@@ -15,7 +15,7 @@
   </td>
   <% if self.controller_name == "nodes" %>
   <td>
-    <%= link_to h(node.owner.login), node.owner %>
+    <%= link_to h(node.owner.login), people_path(node.owner) %>
   </td>
   <% end %>
 </tr>
