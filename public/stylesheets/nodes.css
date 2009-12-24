@@ -234,9 +234,9 @@ p label {
 }
 
 .fieldWithErrors {
-  padding: 2px;
-  background-color: red;
-  display: table;
+  color: #c00;
+  font-weight: bold;
+  display: inline;
 }
 
 #errorExplanation {
