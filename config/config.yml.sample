@@ -19,3 +19,7 @@ development:
     default_units: kms
     google_key: GYDDGdwiqCoxTtIs0fc7NfWJ5K-3NpfQ2tTAszQOsjKAJsJDXQAJASmpv7EQpwP4vl28MFRQk2AA5L8rJB2fsQ
     yahoo_key: Pq2pwIdOP3V3VKNDd.CHiXK1dF3LoUsFXe4FAYXCjvgP9weyDQq_ezi7FjMnAJwlwMqeixRCsxYt
+  map:
+    lon: 9.738435
+    lat: 52.374394
+    zoom: 13

@@ -4,9 +4,9 @@ class MapController < ApplicationController
 
   def index
     
-    @lon = params[:lon] || 9.738435
-    @lat = params[:lat] || 52.374394
-    @zoom = params[:zoom] || 13 
+    @lon = params[:lon] || APP_CONFIG['map']['lon']
+    @lat = params[:lat] || APP_CONFIG['map']['lat']
+    @zoom = params[:zoom] || APP_CONFIG['map']['zoom'] 
 
     @map = MapLayers::Map.new("map", 
       :projection => OpenLayers::Projection.new("EPSG:900913"), 
