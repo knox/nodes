@@ -14,24 +14,26 @@ class Node < ActiveRecord::Base
 
   validate :geocode_address, :unless => Proc.new { |node| node.street.blank? }
 
-  validates_presence_of :name, :ip_address 
+  validates_presence_of :name 
+  validates_format_of :name, :with => /\A[\w\-_]*\z/, :message => "must contain only letters, numbers, and - or _" 
+  validates_uniqueness_of :name, :case_sensitive => false
 
   validates_presence_of :lat, :unless => Proc.new { |node| node.lng.blank? }  
-  validates_presence_of :lng, :unless => Proc.new { |node| node.lat.blank? }  
-  
   validates_numericality_of :lat, 
     :less_than_or_equal_to => 180, 
     :greater_than_or_equal_to => -180,
     :allow_nil => true
   
+  validates_presence_of :lng, :unless => Proc.new { |node| node.lat.blank? }  
   validates_numericality_of :lng, 
     :less_than_or_equal_to => 180, 
     :greater_than_or_equal_to => -180,
     :allow_nil => true
   
+  validates_presence_of :ip_address 
   validates_format_of :ip_address, 
     :with => /\A(?:25[0-5]|(?:2[0-4]|1\d|[1-9])?\d)(?:\.(?:25[0-5]|(?:2[0-4]|1\d|[1-9])?\d)){3}\z/,
-    :unless => Proc.new { |node| node.ip_address.blank? }
+    :allow_blank => true
   
   validate :ip_within_subnet, :unless => Proc.new { |node| node.ip_address.blank? }
   validate :unique_ip_address, :unless => Proc.new { |node| node.ip_address.blank? }

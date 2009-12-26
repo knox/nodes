@@ -11,18 +11,19 @@ class Subnet < ActiveRecord::Base
   
   attr_accessible :name, :ip_address, :prefix_length, :description
   
-  validates_presence_of :name, :ip_address, :prefix_length
+  validates_presence_of :name
+  validates_uniqueness_of :name, :case_sensitive => false
   
-  validates_uniqueness_of :name
-  
+  validates_presence_of :ip_address
   validates_format_of :ip_address, 
     :with => /\A(?:25[0-5]|(?:2[0-4]|1\d|[1-9])?\d)(?:\.(?:25[0-5]|(?:2[0-4]|1\d|[1-9])?\d)){3}\z/,
-    :unless => Proc.new { |subnet| subnet.ip_address.blank? }
+    :allow_blank => true
 
-  validate :valid_subnet, :unless => Proc.new { |subnet| subnet.ip_address.blank? }
-  validate :separate_subnet, :unless => Proc.new { |subnet| subnet.ip_address.blank? }
-  
+  validates_presence_of :prefix_length
   validates_numericality_of :prefix_length, :only_integer => true, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 32, :allow_nil => true
+  
+  validate :valid_subnet, :unless => Proc.new { |subnet| subnet.ip_address.blank? or subnet.prefix_length.blank? }
+  validate :separate_subnet, :unless => Proc.new { |subnet| subnet.ip_address.blank? or subnet.prefix_length.blank? }
   
   def ip_address
     @ip_address = IPAddr.itoa(self.ip) if @ip_address.nil? and self.ip.is_a?(Integer)
