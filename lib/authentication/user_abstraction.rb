@@ -200,8 +200,10 @@ module Authentication
 		  protected
 		    
 		  def make_activation_code
-		    self.activation_code = self.class.make_token
-				@created = true
+        if !active?  
+		      self.activation_code = self.class.make_token
+				  @created = true
+        end
 		  end
 
 		  def make_password_reset_code
