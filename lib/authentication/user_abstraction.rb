@@ -108,7 +108,7 @@ module Authentication
       # Password reset method
       def find_for_forget(email)
         u = find :first, :conditions => ['email = ? and activated_at IS NOT NULL', email]
-        return false if (email.blank? || u.nil? || (!u.identity_url.blank? && u.password.blank?))
+        return false if (email.blank? || u.nil?)
         (u.forgot_password && u.save) ? true : false
       end
 
