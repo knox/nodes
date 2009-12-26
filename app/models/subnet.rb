@@ -5,7 +5,7 @@ class Subnet < ActiveRecord::Base
   before_save :ip_to_long
 
   belongs_to :owner, :class_name => "User", :foreign_key => "user_id"
-  has_many :nodes, :dependent => :destroy
+  has_many :nodes, :dependent => :nullify 
 
   attr :ip_address, true
   

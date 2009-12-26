@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   
   attr_accessible :login, :name, :email, :password, :password_confirmation
   
-  has_many :subnets, :dependent => :destroy
+  has_many :subnets, :dependent => :nullify 
   has_many :nodes, :dependent => :destroy
 
   def self.list_of_active
