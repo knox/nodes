@@ -10,7 +10,7 @@ class Node < ActiveRecord::Base
   belongs_to :subnet
 
   attr :ip_address, true
-  attr_accessible :name, :street, :zip, :city, :lat, :lng, :position, :description, :ip_address, :subnet_id
+  attr_accessible :name, :street, :zip, :city, :lat, :lng, :position, :description, :ip_address, :subnet_id, :user_id
 
   validate :geocode_address, :unless => Proc.new { |node| node.street.blank? or (!node.lat.blank? and !node.lng.blank?) }
 

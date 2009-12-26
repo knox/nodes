@@ -12,7 +12,14 @@
 <br/>
 <%= f.label :prefix_length %><%= f.text_field :prefix_length %>
 </fieldset>
+<% if logged_in? && current_user.has_role?('admin') %>
+<fieldset>
+	<legend>Owner</legend>
+	<%= f.label :owner, 'Login' %><%= f.collection_select(:user_id, User.list_of_active, :id, :login)  %>
+</fieldset>
+<% else %>
+	<%= f.hidden_field :user_id, :value => current_user.id %>
+<% end %>
 <br/>
-<%= f.hidden_field :owner, :value => current_user.id %>
-<%= f.submit 'Save' %>
+<%= f.submit 'Save', :disable_with => "Saving&hellip;" %>
 <% end %>

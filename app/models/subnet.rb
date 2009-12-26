@@ -9,7 +9,7 @@ class Subnet < ActiveRecord::Base
 
   attr :ip_address, true
   
-  attr_accessible :name, :ip_address, :prefix_length, :description
+  attr_accessible :name, :ip_address, :prefix_length, :description, :user_id
   
   validates_presence_of :name
   validates_uniqueness_of :name, :case_sensitive => false
