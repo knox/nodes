@@ -26,11 +26,17 @@ ActionController::Routing::Routes.draw do |map|
   end    
 
   map.resource  :session
+  
   map.resources :people, :singular => 'people'
 
   map.resources :subnets #, :has_many => :nodes
+  
+  map.map 'nodes/georss', :controller => :nodes, :action => :georss
+  map.map 'nodes/kml', :controller => :nodes, :action => :kml
+  map.map 'nodes/wfs', :controller => :nodes, :action => :wfs
   map.resources :nodes 
-  map.map 'Map', :controller => 'map'
+
+  map.map 'map', :controller => 'map'
   
   # The priority is based upon order of creation: first created -> highest priority.
 
