@@ -10,10 +10,10 @@ It's development has just started and therefore most of the features are yet lis
 * Map displaying nodes
   * Base Layer from OpenStreetMap.org
   * Main Layer displays data from the node database
-  * Additional layer to display data from OLSR nameservice plugin
-  * Additional layer to display data from global freifunkmap on layereight.de
+  * Additional layers to display data from external datasources (e.g. OLSR nameservice plugin)
 * User self-signup with E-Mail activation and password reminder
 * Simple role based authorization
+* Basic admin backend
 
 === Planned Features
 * "Click here to join Freifunk"-Wizard for users with very limited technical knowledge
@@ -21,28 +21,32 @@ It's development has just started and therefore most of the features are yet lis
 * Auto-generation/proposal of IP addresses 
 * Pagination (will_paginate)
 * Tags (acts_as_taggable)
-* Extend user profiles, e.g. avatar, jabber, etc.
+* Add search function
 * Polish geo location lookup
-* Mass mailer for admin
 * Enrich map layer
-* Add search function to map
+* Extend user profiles, e.g. avatar, jabber, etc.
+* Mass mailer for admin
 
 == Installation
 
 1. Clone main application
- $ git clone git://github.com/knox/nodes.git
+    $ git clone git://github.com/knox/nodes.git
+  
 2. Clone plugins
- $ git submodule init
- $ git submodule update
+    $ git submodule init
+    $ git submodule update
+  
 3. Create configuration files to suit your needs
- $ cp config/database.yml.sample config/database.yml
- $ vi config/database.yml
- $ cp config/config.yml.sample config/config.yml
- $ vi config/config.yml
+    $ cp config/database.yml.sample config/database.yml
+    $ vi config/database.yml
+    $ cp config/config.yml.sample config/config.yml
+    $ vi config/config.yml
+  
 4. Generate site key (encrypts user passwords)
- $ rake auth:gen:site_key
+    $ rake auth:gen:site_key
+  
 5. Create database, load chema and initialize with the seed data
- $ rake db:setup
+    $ rake db:setup
 
 == Todo
 
@@ -51,18 +55,24 @@ Write tests and documentation
 == Plugins
 
 * Geokit-Rails by Bill Eisenhauer & Andre Lewis is released under the MIT License
-  http://github.com/andre/geokit-rails
+   http://github.com/andre/geokit-rails
+
 * MapLayers by Pirmin Kalberer is released under the MIT License
-  http://github.com/pka/map_layers
+   http://github.com/pka/map_layers
+
 * Restful_authentication by Rick Olson is released under the MIT License
-  http://github.com/technoweenie/restful-authentication
+   http://github.com/technoweenie/restful-authentication
+
 * Role_requirement by Timothy Curtis Harper and Jonathan Barket is released under the MIT License
-  http://github.com/timcharper/role_requirement
+   http://github.com/timcharper/role_requirement
 
 == References
 
 This application is inspired by FFSomething
-https://dev.leipzig.freifunk.net/trac/wiki/FFSomething
+ https://dev.leipzig.freifunk.net/trac/wiki/FFSomething
+
+The cgi-bin-map.kml script is written by Sven-Ola and was published on the OLSR Mailinglist
+ http://lists.olsr.org/pipermail/olsr-dev/2008-August/002369.html
 
 Most of the authentication and authorization stuff has been taken from the nice tutorial by Matthew Solt, released under the MIT License
  http://github.com/activefx/restful_authentication_tutorial
