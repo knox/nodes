@@ -29,10 +29,9 @@ namespace :nodes do
                   :name => [ ffnode.owner.first_name, ffnode.owner.last_name ].join(' ').gsub(/\s*\z/, ''),
                   :email => ffnode.owner.email
               )
-              owner.activated_at = Time.now.utc
-              owner.forgot_password
-              owner.save(false)
-              owner = User.find(owner.id) # reload to avoid multiple email notification
+              owner.forgot_password # prepare password reset code
+              owner.activate! # activates and saves the user, thus triggers sending of email notifications
+              owner = User.find(owner.id) # reload to avoid duplicate email notification
               owner.update_attribute(:created_at, ffnode.owner.date_joined)
               puts "Created User: #{owner.login}"
             end
