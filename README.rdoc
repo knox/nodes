@@ -26,6 +26,8 @@ It's development has just started and therefore most of the features are yet lis
 * Enrich map layer
 * Extend user profiles, e.g. avatar, jabber, etc.
 * Mass mailer for admin
+* Graceful handling of invalid requests (respond with http 404 where appropriate)
+* HTTPS for sensitive actions
 
 == Installation
 
