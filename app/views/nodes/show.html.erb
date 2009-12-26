@@ -40,12 +40,15 @@
   <br/>
 </p>
 
-<h3>Owner</h3>
+<h3>Misc</h3>
 <p>
   <label>
-    Login:
+    Owner:
   </label>
   <%= link_to h(@node.owner.login), people_path(@node.owner) %>
+  <br/>
+  <label>Created at:</label>
+  <%= @node.created_at.to_s(:long) %>
   <br/>
 </p>
 

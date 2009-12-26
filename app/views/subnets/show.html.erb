@@ -14,12 +14,15 @@
   <br/>
 </p>
 
-<h3>Owner</h3>
+<h3>Misc</h3>
 <p>
   <label>
     Login:
   </label>
   <%= link_to h(@subnet.owner.login), people_path(@subnet.owner) %>
+  <br/>
+  <label>Created at:</label>
+  <%= @subnet.created_at.to_s(:long) %>
   <br/>
 </p>
 
