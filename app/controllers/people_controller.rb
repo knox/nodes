@@ -3,10 +3,7 @@ class PeopleController < ApplicationController
   after_filter :store_location
 
   def index
-    @users = User.find(:all,
-        :conditions => ['enabled = ? and activated_at IS NOT NULL', true],
-        :order => 'login'
-    )
+    @users = User.list_of_active
 	end
 
 	def show

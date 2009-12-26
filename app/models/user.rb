@@ -11,6 +11,13 @@ class User < ActiveRecord::Base
   has_many :subnets, :dependent => :destroy
   has_many :nodes, :dependent => :destroy
 
+  def self.list_of_active
+    User.find(:all,
+      :conditions => ['enabled = ? and activated_at IS NOT NULL', true],
+      :order => 'login'
+    )
+  end
+  
   def owns_node?(node_in_question)
     if node_in_question.is_a? Integer
       self.nodes.exists?(:id => node_in_question)
