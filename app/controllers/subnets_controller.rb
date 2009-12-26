@@ -4,7 +4,7 @@ class SubnetsController < ApplicationController
   before_filter :find_subnet, :only => [:show, :edit, :update, :destroy] 
   after_filter :store_location, :only => [:index, :show, :new, :edit]
 
-  require_role "admin", :for => [:edit, :update, :destroy], :unless => "current_user.owns_subnet?(params[:id].to_i)"
+  require_role "admin", :for => [:edit, :update, :destroy], :unless => "current_user.owns_subnet?(params[:id])"
 
   def index
     @subnets = Subnet.all
@@ -73,7 +73,7 @@ class SubnetsController < ApplicationController
 
   private
     def find_subnet
-      @subnet = Subnet.find(params[:id])
+      @subnet = Subnet.find_by_name(params[:id])
     end
   
 

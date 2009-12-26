@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091215111757) do
+ActiveRecord::Schema.define(:version => 20091226184754) do
 
   create_table "nodes", :force => true do |t|
     t.string   "name"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(:version => 20091215111757) do
     t.datetime "updated_at"
     t.integer  "user_id",                                   :default => 1
   end
+
+  add_index "nodes", ["name"], :name => "index_nodes_on_name", :unique => true
 
   create_table "roles", :force => true do |t|
     t.string "name"
@@ -49,6 +51,8 @@ ActiveRecord::Schema.define(:version => 20091215111757) do
     t.datetime "updated_at"
     t.integer  "user_id",       :default => 1
   end
+
+  add_index "subnets", ["name"], :name => "index_subnets_on_name", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "login",                     :limit => 40

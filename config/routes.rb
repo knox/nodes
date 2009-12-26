@@ -29,7 +29,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :people, :singular => 'people'
 
   map.resources :subnets #, :has_many => :nodes
-  map.resources :nodes, :requirements => {:id => /[0-9]+/} 
+  map.resources :nodes 
   map.map 'Map', :controller => 'map'
   
   # The priority is based upon order of creation: first created -> highest priority.

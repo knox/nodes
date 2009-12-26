@@ -15,7 +15,9 @@ class Node < ActiveRecord::Base
   validate :geocode_address, :unless => Proc.new { |node| node.street.blank? or (!node.lat.blank? and !node.lng.blank?) }
 
   validates_presence_of :name 
-  validates_format_of :name, :with => /\A[\w\-_]*\z/, :message => "must contain only letters, numbers, and - or _" 
+  validates_format_of :name, :with => /\A[\w\-]*\z/, 
+    :message => "must contain only letters, numbers, dashes and underscores", 
+    :allow_blank => true 
   validates_uniqueness_of :name, :case_sensitive => false
 
   validates_presence_of :lat, :unless => Proc.new { |node| node.lng.blank? }  
@@ -45,6 +47,10 @@ class Node < ActiveRecord::Base
   def ip_address
     @ip_address = IPAddr.itoa(self.ip) if @ip_address.nil? and self.ip.is_a?(Integer)
     @ip_address
+  end
+  
+  def to_param
+    name
   end
   
   private

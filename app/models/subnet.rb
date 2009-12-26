@@ -12,6 +12,9 @@ class Subnet < ActiveRecord::Base
   attr_accessible :name, :ip_address, :prefix_length, :description, :user_id
   
   validates_presence_of :name
+  validates_format_of :name, :with => /\A[\w\-\ @]*\z/, 
+    :message => "must contain only letters, numbers, underscores, dashes and spaces",
+    :allow_blank => true
   validates_uniqueness_of :name, :case_sensitive => false
   
   validates_presence_of :ip_address
@@ -28,6 +31,10 @@ class Subnet < ActiveRecord::Base
   def ip_address
     @ip_address = IPAddr.itoa(self.ip) if @ip_address.nil? and self.ip.is_a?(Integer)
     @ip_address
+  end
+  
+  def to_param
+    name
   end
 
   private

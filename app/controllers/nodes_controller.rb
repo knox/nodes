@@ -6,7 +6,7 @@ class NodesController < ApplicationController
   before_filter :login_required, :only => [:new, :edit, :update, :create, :destroy]
   after_filter :store_location, :only => [:index, :show, :new, :edit]
 
-  require_role "admin", :for => [:edit, :update, :destroy], :unless => "current_user.owns_node?(params[:id].to_i)"
+  require_role "admin", :for => [:edit, :update, :destroy], :unless => "current_user.owns_node?(params[:id])"
 
   # GET /nodes
   # GET /nodes.xml
@@ -93,7 +93,7 @@ class NodesController < ApplicationController
 
   private
     def find_node
-      @node = Node.find(params[:id])
+      @node = Node.find_by_name(params[:id])
     end
   
 end

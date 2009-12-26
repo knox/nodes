@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
   def owns_node?(node_in_question)
     if node_in_question.is_a? Integer
       self.nodes.exists?(:id => node_in_question)
+    elsif node_in_question.is_a? String
+      self.nodes.exists?(:name => node_in_question)
     elsif node_in_question.is_a? Node
       self == node_in_question.owner 
     else
@@ -31,6 +33,8 @@ class User < ActiveRecord::Base
   def owns_subnet?(subnet_in_question)
     if subnet_in_question.is_a? Integer
       self.subnets.exists?(:id => subnet_in_question)
+    elsif subnet_in_question.is_a? String
+      self.subnets.exists?(:name => subnet_in_question)
     elsif subnet_in_question.is_a? Subnet
       self == subnet_in_question.owner 
     else
