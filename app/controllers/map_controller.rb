@@ -29,10 +29,15 @@ class MapController < ApplicationController
       page << map.add_layer(Layer::GeoRSS.new("Nodes", "/nodes/georss", { :projection => OpenLayers::Projection.new("EPSG:4326") }))
       #page << map.add_layer(Layer::GML.new("Nodes KML", "/nodes/kml", { :format => JsExpr.new("OpenLayers.Format.KML"), :projection => OpenLayers::Projection.new("EPSG:4326"), :visibility => false }))
       #page << map.add_layer(Layer::WFS.new("Nodes WFS", "/nodes/wfs", { :typename => "nodes" }, { :featureClass => JsExpr.new("OpenLayers.Feature.WFS"), :projection => OpenLayers::Projection.new("EPSG:4326"), :visibility => false }))
-      #page << map.add_layer(Layer::Text.new("BassSlave", { :location => "/nodes.txt", :projection => OpenLayers::Projection.new("EPSG:4326"), :visibility => false }))
-      page << map.add_layer(Layer::GML.new("Live (OLSR)", "/live.kml", { :format => JsExpr.new("OpenLayers.Format.KML"), :projection => OpenLayers::Projection.new("EPSG:4326"), :visibility => false }))
-      page << map.add_layer(Layer::GML.new("Global (layereight.de)", "/freifunkmap.xml", { :format => JsExpr.new("OpenLayers.Format.KML"), :projection => OpenLayers::Projection.new("EPSG:4326"), :visibility => false }))
       
+      page << map.add_layer(Layer::GML.new("Live (OLSR)", 
+        RAILS_ENV == 'production' ? '/cgi-bin/cgi-bin-map.kml' : '/mirror/cgi-bin-map.kml', 
+        { :format => JsExpr.new("OpenLayers.Format.KML"), :projection => OpenLayers::Projection.new("EPSG:4326"), :visibility => false }))
+
+      if RAILS_ENV == 'development'
+        page << map.add_layer(Layer::GML.new("Global (layereight.de)", '/mirror/freifunkmap.xml', { :format => JsExpr.new("OpenLayers.Format.KML"), :projection => OpenLayers::Projection.new("EPSG:4326"), :visibility => false }))
+      end
+    
       page << map.set_center(OpenLayers::LonLat.new(@lon, @lat).transform(OpenLayers::Projection.new("EPSG:4326"), map.javascriptify_method_call("getProjectionObject")), @zoom)
       
     end

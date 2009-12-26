@@ -19,7 +19,8 @@ EOF
 	LS=#weak
 	test ${5%.*} -lt 5 2>&- && LS=#medium
 	test ${5%.*} -lt 2 2>&- && LS=#strong
-	test -n "$6" && test -n "$8" && cat<<EOF
+	test -n "$6" && test -n "$8" && 
+	test ${6%.*} -gt 0 2>&- && test ${8%.*} -gt 0 2>&- && cat<<EOF
 <Placemark>
 <name>$1 - $2 ($5)</name>
 <styleUrl>$LS</styleUrl>
