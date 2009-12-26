@@ -17,7 +17,7 @@
   <label>
     Geo Location:
   </label>
-  <%=h @node.lat %>, <%=h @node.lng %>
+  <%=h [ @node.lat, @node.lng ].compact.join(", ") %>
   <br/>
   <label>
     Position:
