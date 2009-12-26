@@ -32,6 +32,7 @@ namespace :nodes do
               owner.activated_at = Time.now.utc
               owner.forgot_password
               owner.save(false)
+              owner = User.find(owner.id) # reload to avoid multiple email notification
               owner.update_attribute(:created_at, ffnode.owner.date_joined)
               puts "Created User: #{owner.login}"
             end
