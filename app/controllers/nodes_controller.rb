@@ -11,7 +11,7 @@ class NodesController < ApplicationController
   # GET /nodes
   # GET /nodes.xml
   def index
-    @nodes = Node.all
+    @nodes = Node.all(:order => 'name')
 
     respond_to do |format|
       format.html # index.html.erb

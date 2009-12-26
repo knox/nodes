@@ -7,7 +7,7 @@ class SubnetsController < ApplicationController
   require_role "admin", :for => [:edit, :update, :destroy], :unless => "current_user.owns_subnet?(params[:id])"
 
   def index
-    @subnets = Subnet.all
+    @subnets = Subnet.all(:order => 'name')
 
     respond_to do |format|
       format.html # index.html.erb
