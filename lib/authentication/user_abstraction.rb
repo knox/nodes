@@ -10,7 +10,7 @@ module Authentication
   				validates_presence_of     :login
   				validates_length_of       :login,    :within => 3..40
   				validates_uniqueness_of   :login
-  				validates_format_of       :login,    :with => Authentication.login_regex, 
+  				validates_format_of       :login,    :with => /\A[\w\-\ @]*\z/, 
 																							 :message => Authentication.bad_login_message,
                                                :allow_blank => true
 
