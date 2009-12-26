@@ -1,5 +1,5 @@
 class User::ProfilesController < ApplicationController
-  before_filter :login_required, :only =>  [ :show, :edit, :update ]
+  before_filter :login_required, :only =>  [ :show, :edit, :update, :destroy ]
 	before_filter :login_prohibited, :only => [:new, :create]
    
   # This show action only allows users to view their own profile
@@ -47,4 +47,12 @@ class User::ProfilesController < ApplicationController
     end
   end
 
+  def destroy
+    @user = current_user
+    logout_killing_session!
+    @user.destroy  
+    flash[:notice] = "Your account has been deleted."
+    redirect_to root_path
+  end
+  
 end
