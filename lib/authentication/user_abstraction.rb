@@ -96,7 +96,9 @@ module Authentication
         else
           u.password = password
           u.password_confirmation = password_confirmation
-          if u.save
+          if !u.valid?
+            yield :error, "Password #{u.errors.on(:password)}", nil, false
+          elsif u.save
             u.reset_password!
             yield :notice, "Password reset.", "login_path", false
           else
