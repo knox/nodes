@@ -5,9 +5,11 @@
   <td>
     <%= h(user.name) %>
   </td>
+  <% if logged_in? %>
   <td>
     <%= mail_to user.email, user.email, :encode => "javascript" %>
   </td>
+  <% end %>
   <td>
     <%= user.created_at.to_date.to_s %>
   </td>

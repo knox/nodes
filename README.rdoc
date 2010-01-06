@@ -20,6 +20,7 @@ It's development has just started and therefore most of the features are yet lis
 * Suggest existing nearby subnet based on geo location
 * Auto-generation/proposal of IP addresses 
 * Pagination (will_paginate)
+* Messaging system (allow sending emails to people without exposing their email to the public)
 * Tags (acts_as_taggable)
 * Add search function
 * Polish geo location lookup

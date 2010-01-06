@@ -3,9 +3,11 @@
   <label>Name:</label>
   <%= h(@user.name) %>
   <br />
+  <% if logged_in? %>
   <label>E-Mail:</label>
   <%=  mail_to @user.email, @user.email, :encode => "javascript" %>
   <br />
+  <% end %>
   <label>Registration Date:</label>
   <%= @user.created_at.to_s(:long) %>
   <br />
