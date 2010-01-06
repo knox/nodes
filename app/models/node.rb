@@ -69,7 +69,7 @@ class Node < ActiveRecord::Base
     
     def unique_ip_address
       return if errors.on(:ip_address)
-      if Node.exists?(["id <> ? AND ip = ? ", id, IPAddr.new(ip_address).to_i])
+      if Node.exists?(['id <> ? AND ip = ?', (id.nil? ? 0 : id), IPAddr.new(ip_address).to_i])
         errors.add(:ip_address, "is not unique") 
       end      
     end

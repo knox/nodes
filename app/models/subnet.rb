@@ -64,7 +64,7 @@ class Subnet < ActiveRecord::Base
       addr = IPAddr.new(ip_address).mask(prefix_length)
       min = addr.to_i
       max = min + addr.max_hosts
-      if Subnet.exists?([ "id <> ? AND ((? >= ip AND ? <= (ip + max_hosts + 1)) OR (? >= ip AND ? <= (ip + max_hosts + 1)))", id, min, min, max, max ])      
+      if Subnet.exists?([ 'id <> ? AND ((? >= ip AND ? <= (ip + max_hosts + 1)) OR (? >= ip AND ? <= (ip + max_hosts + 1)))', (id.nil? ? 0 : id), min, min, max, max ])      
         errors.add(:ip_address, "overlaps with existing")
       end
     end
