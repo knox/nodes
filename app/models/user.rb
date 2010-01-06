@@ -10,7 +10,9 @@ class User < ActiveRecord::Base
   
   strip_attributes!
   
-  has_many :subnets, :dependent => :nullify 
+  before_destroy :update_or_destroy_subnets
+  has_many :subnets #, :dependent => :destroy
+
   has_many :nodes, :dependent => :destroy
 
   def self.list_of_active
@@ -43,5 +45,22 @@ class User < ActiveRecord::Base
       false
     end
   end
-  
+
+  private
+    def update_or_destroy_subnets
+      self.subnets.each { |subnet|
+        subnet.nodes.find(:all, 
+            :conditions => [ 'user_id != ?', self.id ],
+            :select => 'user_id',
+            :order => 'created_at DESC').each { |node|
+          if self != node.owner
+            subnet.owner = node.owner
+            subnet.save
+            break
+          end
+        }
+        subnet.destroy if subnet.owner == self
+      }      
+    end
+
 end
