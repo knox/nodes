@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
 	require_role :admin
 
   def index
-    @users = User.find(:all, :order => 'login')
+    @users = User.paginate(:page => params[:page], :order => 'login')
   end
 
 	# Administrative activate action

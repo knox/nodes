@@ -11,11 +11,9 @@ class NodesController < ApplicationController
   # GET /nodes
   # GET /nodes.xml
   def index
-    @nodes = Node.all(:order => 'name')
-
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @nodes }
+      format.html { @nodes = Node.paginate(:page => params[:page], :order => 'name') }# index.html.erb
+      format.xml  { render :xml => Node.all(:order => 'name') }
     end
   end
 

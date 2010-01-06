@@ -3,7 +3,7 @@ class PeopleController < ApplicationController
   after_filter :store_location
 
   def index
-    @users = User.list_of_active
+    @users = User.list_of_active(params[:page])
 	end
 
 	def show

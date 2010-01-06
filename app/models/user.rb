@@ -15,9 +15,9 @@ class User < ActiveRecord::Base
 
   has_many :nodes, :dependent => :destroy
 
-  def self.list_of_active
-    User.find(:all,
-      :conditions => ['enabled = ? and activated_at IS NOT NULL', true],
+  def self.list_of_active(page)
+    User.paginate(:page => page,
+      :conditions => ['activated_at IS NOT NULL', true],
       :order => 'login'
     )
   end

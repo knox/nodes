@@ -21,7 +21,6 @@ For a live installation visit http://db.hannover.freifunk.net
 * "Click here to join Freifunk"-Wizard for users with very limited technical knowledge
 * Suggest existing nearby subnet based on geo location
 * Auto-generation/proposal of IP addresses 
-* Pagination (will_paginate)
 * Messaging system (allow sending emails to people without exposing their email to the public)
 * Tags (acts_as_taggable)
 * Add search function

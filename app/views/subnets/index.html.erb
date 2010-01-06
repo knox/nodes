@@ -22,4 +22,7 @@
 </table>
 <div id="toolbar">
   <%= link_to 'Add Subnet', new_subnet_path %>
+  <div class="pagination">
+    <%= will_paginate @subnets %>
+  </div>
 </div>
