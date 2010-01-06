@@ -57,7 +57,7 @@ For a live installation visit http://db.hannover.freifunk.net
 
 Write tests and documentation
 
-== Plugins
+== Plugins / Gems
 
 * Geokit-Rails by Bill Eisenhauer & Andre Lewis is released under the MIT License
    http://github.com/andre/geokit-rails
@@ -73,6 +73,9 @@ Write tests and documentation
 
 * StripAttributes by Ryan McGeary is released under the MIT License
    http://github.com/rmm5t/strip_attributes
+
+* will_paginate by Mislav Marohnic and PJ Hyett is released under the MIT License 
+   http://github.com/mislav/will_paginate
   
 == References
 
