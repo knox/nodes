@@ -4,6 +4,8 @@ This is a simple web application for maintaining a list of nodes (and subnets) w
 
 It's development has just started and therefore most of the features are yet listed as planned.
 
+For a live installation visit http://db.hannover.freifunk.net
+ 
 === Features
 * IP Address validation to ensure unique, separate addresses
 * Automatic geo location lookup for node based on given postal address
@@ -87,4 +89,4 @@ Most of the authentication and authorization stuff has been taken from the nice 
 
 Freifunk Node Database is released under the MIT license.
 
-Copyright (c) 2009 Mikolas Bingemer
+Copyright (c) 2009, 2010 Mikolas Bingemer
