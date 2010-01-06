@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   
   attr_accessible :login, :name, :email, :password, :password_confirmation
   
+  strip_attributes!
+  
   has_many :subnets, :dependent => :nullify 
   has_many :nodes, :dependent => :destroy
 

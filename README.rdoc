@@ -62,12 +62,15 @@ Write tests and documentation
 * MapLayers by Pirmin Kalberer is released under the MIT License
    http://github.com/pka/map_layers
 
-* Restful_authentication by Rick Olson is released under the MIT License
+* restful_authentication by Rick Olson is released under the MIT License
    http://github.com/technoweenie/restful-authentication
 
-* Role_requirement by Timothy Curtis Harper and Jonathan Barket is released under the MIT License
+* role_requirement by Timothy Curtis Harper and Jonathan Barket is released under the MIT License
    http://github.com/timcharper/role_requirement
 
+* StripAttributes by Ryan McGeary is released under the MIT License
+   http://github.com/rmm5t/strip_attributes
+  
 == References
 
 This application is inspired by FFSomething

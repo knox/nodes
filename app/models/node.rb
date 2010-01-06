@@ -4,6 +4,8 @@ class Node < ActiveRecord::Base
   
   acts_as_mappable
 
+  strip_attributes!
+
   before_save :ip_to_long
 
   belongs_to :owner, :class_name => "User", :foreign_key => "user_id"

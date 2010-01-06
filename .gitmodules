@@ -10,3 +10,6 @@
 [submodule "vendor/plugins/map_layers"]
 	path = vendor/plugins/map_layers
 	url = git://github.com/knox/map_layers.git
+[submodule "vendor/plugins/strip_attributes"]
+	path = vendor/plugins/strip_attributes
+	url = git://github.com/rmm5t/strip_attributes.git
