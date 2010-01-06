@@ -66,6 +66,8 @@ class Node < ActiveRecord::Base
       subnet = Subnet.find(subnet_id)
       net = IPAddr.new_itoh(subnet.ip).mask(subnet.prefix_length)
       errors.add(:ip_address, 'is not within the selected subnet') unless net.include?(@addr)
+      errors.add(:ip_address, 'must not match with the network address of the selected subnet') if ip == net.to_i 
+      errors.add(:ip_address, 'must not match with the broadcast address of the selected subnet') if ip == net.bcast.to_i
     end
     
     def unique_ip_address
