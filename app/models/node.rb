@@ -6,9 +6,9 @@ class Node < ActiveRecord::Base
 
   strip_attributes!
 
-  before_save :ip_to_long
+  before_validation :ip_to_long
 
-  belongs_to :owner, :class_name => "User", :foreign_key => "user_id"
+  belongs_to :owner, :class_name => 'User', :foreign_key => 'user_id'
   belongs_to :subnet
 
   attr :ip_address, true
@@ -18,7 +18,7 @@ class Node < ActiveRecord::Base
 
   validates_presence_of :name 
   validates_format_of :name, :with => /\A[\w\-]*\z/, 
-    :message => "must contain only letters, numbers, dashes and underscores", 
+    :message => 'must contain only letters, numbers, dashes and underscores', 
     :allow_blank => true 
   validates_uniqueness_of :name, :case_sensitive => false
 
@@ -57,20 +57,21 @@ class Node < ActiveRecord::Base
   
   private
     def ip_to_long
-      self.ip = IPAddr.new(ip_address).to_i      
+      @addr = IPAddr.new(ip_address)
+      self.ip = @addr.to_i      
     end
 
     def ip_within_subnet
       return if errors.on(:ip_address) or errors.on(:subnet_id)
       subnet = Subnet.find(subnet_id)
       net = IPAddr.new_itoh(subnet.ip).mask(subnet.prefix_length)
-      errors.add(:ip_address, "is not within the selected subnet") unless net.include?(IPAddr.new(ip_address))
+      errors.add(:ip_address, 'is not within the selected subnet') unless net.include?(@addr)
     end
     
     def unique_ip_address
       return if errors.on(:ip_address)
-      if Node.exists?(['id <> ? AND ip = ?', (id.nil? ? 0 : id), IPAddr.new(ip_address).to_i])
-        errors.add(:ip_address, "is not unique") 
+      if Node.exists?(['id <> ? AND ip = ?', (id.nil? ? 0 : id), ip])
+        errors.add(:ip_address, 'allready exists') 
       end      
     end
     

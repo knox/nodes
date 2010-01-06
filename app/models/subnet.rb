@@ -2,11 +2,11 @@ require 'ipfoo'
 
 class Subnet < ActiveRecord::Base
   
-  before_save :ip_to_long
-
+  before_validation :ip_to_long
+  
   strip_attributes!
   
-  belongs_to :owner, :class_name => "User", :foreign_key => "user_id"
+  belongs_to :owner, :class_name => 'User', :foreign_key => 'user_id'
 
   has_many :nodes, :dependent => :destroy 
 
@@ -16,7 +16,7 @@ class Subnet < ActiveRecord::Base
   
   validates_presence_of :name
   validates_format_of :name, :with => /\A[\w\-\ @]*\z/, 
-    :message => "must contain only letters, numbers, underscores, dashes and spaces",
+    :message => 'must contain only letters, numbers, underscores, dashes and spaces',
     :allow_blank => true
   validates_uniqueness_of :name, :case_sensitive => false
   
@@ -50,22 +50,22 @@ class Subnet < ActiveRecord::Base
   
   private
     def ip_to_long
-      addr = IPAddr.new(ip_address).mask(prefix_length)
-      self.ip = addr.to_i
-      self.max_hosts = addr.max_hosts
+      @addr = IPAddr.new(ip_address)
+      net = @addr.mask(prefix_length)
+      self.ip = net.to_i
+      self.max_hosts = net.max_hosts
     end
-  
+    
     def valid_subnet
-      errors.add(:ip_address, "is not a valid network address") unless IPAddr.new(ip_address).mask(prefix_length).to_i == IPAddr.new(ip_address).to_i      
+      errors.add(:ip_address, 'is not a valid network address') unless ip == @addr.to_i      
     end
     
     def separate_subnet
       return if errors.on(:ip_address) or errors.on(:prefix_length)
-      addr = IPAddr.new(ip_address).mask(prefix_length)
-      min = addr.to_i
-      max = min + addr.max_hosts
+      min = ip
+      max = ip + max_hosts
       if Subnet.exists?([ 'id <> ? AND ((? >= ip AND ? <= (ip + max_hosts + 1)) OR (? >= ip AND ? <= (ip + max_hosts + 1)))', (id.nil? ? 0 : id), min, min, max, max ])      
-        errors.add(:ip_address, "overlaps with existing")
+        errors.add(:ip_address, 'overlaps with an existing Subnet')
       end
     end
 end
