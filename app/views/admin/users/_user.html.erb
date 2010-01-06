@@ -3,6 +3,8 @@
         <%= link_to h(user.login), people_path(user) %>
     </td>
     <td>
+      <%= h(user.name) %>
+    <td>
         <%= mail_to user.email, user.email, :encode => "javascript" %>
     </td>
     <td>
