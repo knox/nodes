@@ -7,7 +7,8 @@ class Subnet < ActiveRecord::Base
   strip_attributes!
   
   belongs_to :owner, :class_name => "User", :foreign_key => "user_id"
-  has_many :nodes, :dependent => :nullify 
+
+  has_many :nodes, :dependent => :destroy 
 
   attr :ip_address, true
   
@@ -39,6 +40,14 @@ class Subnet < ActiveRecord::Base
     name
   end
 
+  def has_foreign_nodes?
+    self.nodes.find(:all, 
+          :conditions => [ 'user_id != ?', self.id ],
+          :select => 'user_id').each { |node|
+      return true if node.owner != self
+    }  
+  end
+  
   private
     def ip_to_long
       addr = IPAddr.new(ip_address).mask(prefix_length)

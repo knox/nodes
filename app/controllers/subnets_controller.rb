@@ -63,11 +63,18 @@ class SubnetsController < ApplicationController
   end
 
   def destroy
-    @subnet.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(subnets_url) }
-      format.xml  { head :ok }
+    if @subnet.has_foreign_nodes? and !current_user.has_role?('admin')
+        flash[:warning] = 'Cannot destroy Subnet: it has foreign nodes within.'
+        respond_to do |format|
+          format.html { redirect_back_or_default(@subnet) }
+          format.xml  { render :xml => flash[:warning], :status => :unprocessable_entity }
+        end
+    else
+      @subnet.destroy
+      respond_to do |format|
+        format.html { redirect_to(subnets_url) }
+        format.xml  { head :ok }
+      end
     end
   end
 

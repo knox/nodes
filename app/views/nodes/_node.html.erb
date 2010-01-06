@@ -13,7 +13,7 @@
   <td>
     <%= h node.ip_address %>
   </td>
-  <% if self.controller_name == "nodes" %>
+  <% if self.controller_name != "people" %>
   <td>
     <%= link_to h(node.owner.login), people_path(node.owner) %>
   </td>
