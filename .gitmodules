@@ -13,3 +13,6 @@
 [submodule "vendor/plugins/strip_attributes"]
 	path = vendor/plugins/strip_attributes
 	url = git://github.com/rmm5t/strip_attributes.git
+[submodule "vendor/plugins/sort_helper"]
+	path = vendor/plugins/sort_helper
+	url = git://github.com/pengwynn/ujs_sort_helper.git

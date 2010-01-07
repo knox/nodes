@@ -75,6 +75,9 @@ Write tests and documentation
 
 * will_paginate by Mislav Marohnic and PJ Hyett is released under the MIT License 
    http://github.com/mislav/will_paginate
+
+* ujs_sort_helper by Stuart Rackham and Wynn Netherland is released under the MIT license
+   http://github.com/pengwynn/ujs_sort_helper
   
 == References
 
