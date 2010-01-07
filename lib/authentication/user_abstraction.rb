@@ -149,7 +149,7 @@ module Authentication
 				errors.add_to_base("You password was not changed, your old password is incorrect.") and
 					return false unless self.authenticated?(old_password) 
         self.password, self.password_confirmation = new_password, new_confirmation
-				save
+				save(false)
 			end
 
 		  # Activates the user in the database.
