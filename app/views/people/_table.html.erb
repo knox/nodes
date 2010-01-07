@@ -1,0 +1,21 @@
+<table>
+  <thead>
+    <tr>
+      <%= sort_header_tag('login', :title => 'Sort by Login') %>
+      <%= sort_header_tag('name', :title => 'Sort by Name') %>
+      <% if logged_in? %>
+      <%= sort_header_tag('email', :caption => 'E-Mail', :title => 'Sort by E-Mail') %>
+      <% end %>
+      <%= sort_header_tag('created_at', :caption => 'Registration Date', :title => 'Sort by Registration Date') %>
+      <th>
+        Subnets
+      </th>
+      <th>
+        Nodes
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render :partial => 'user', :collection => @users %>
+  </tbody>
+</table>

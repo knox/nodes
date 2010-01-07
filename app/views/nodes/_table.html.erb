@@ -1,0 +1,14 @@
+<table>
+  <thead>
+    <tr>
+      <%= sort_header_tag('name', :caption => 'Name', :title => 'Sort by Name') %>
+      <%= sort_header_tag('street', :caption => 'Address', :title => 'Sort by Address') %>
+      <%= sort_header_tag('subnets.name', :caption => 'Subnet', :title => 'Sort by Subnet') %>
+      <%= sort_header_tag('ip', :caption => 'IP Address', :title => 'Sort by IP Address') %>
+      <%= sort_header_tag('users.login', :caption => 'Owner', :title => 'Sort by Owner') %>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render :partial => 'node', :collection => @nodes %>
+  </tbody>
+</table>
