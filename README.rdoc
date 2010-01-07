@@ -19,17 +19,18 @@ For a live installation visit http://db.hannover.freifunk.net
 
 === Planned Features
 * "Click here to join Freifunk"-Wizard for users with very limited technical knowledge
-* Suggest existing nearby subnet based on geo location
-* Auto-generation/proposal of IP addresses 
+  * Suggest existing nearby subnet based on geo location
+  * Auto-generation/proposal of IP addresses 
 * Messaging system (allow sending emails to people without exposing their email to the public)
-* Tags (acts_as_taggable)
-* Add search function
-* Polish geo location lookup
-* Enrich map layer
-* Extend user profiles, e.g. avatar, jabber, etc.
-* Mass mailer for admin
-* Graceful handling of invalid requests (respond with http 404 where appropriate)
-* HTTPS for sensitive actions
+* Search function
+* Tags (acts_as_taggable?)
+* Localization
+* Gradual engagement (nobody likes signup forms)
+* Enrich user profiles, e.g. avatar, jabber, etc.
+* Require HTTPS for sensitive actions
+* Mass mailer for admin (ar_mailer)
+* Rewrite cgi-bin-map.kml in ruby: add caching and filters
+* Rewrite topo.pl in ruby: add caching and filters
 
 == Installation
 
@@ -54,7 +55,11 @@ For a live installation visit http://db.hannover.freifunk.net
 
 == Todo
 
-Write tests and documentation
+* Write tests (RSpec?)
+* Write documentation (github wiki)
+* Graceful handling of invalid requests (respond with http 404 where appropriate)
+* Polish geo location lookup (separate controller)
+* Polish map layer
 
 == Plugins / Gems
 
