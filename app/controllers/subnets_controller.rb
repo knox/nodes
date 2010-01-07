@@ -44,7 +44,7 @@ class SubnetsController < ApplicationController
     
     respond_to do |format|
       if @subnet.save
-        flash[:notice] = 'Subnet was successfully created.'
+        flash[:success] = 'Subnet was successfully created.'
         format.html { redirect_to(@subnet) }
         format.xml  { render :xml => @subnet, :status => :created, :location => @subnet }
       else
@@ -57,7 +57,7 @@ class SubnetsController < ApplicationController
   def update
     respond_to do |format|
       if @subnet.update_attributes(params[:subnet])
-        flash[:notice] = 'Subnet was successfully updated.'
+        flash[:success] = 'Subnet was successfully updated.'
         format.html { redirect_to(@subnet) }
         format.xml  { head :ok }
       else

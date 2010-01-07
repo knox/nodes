@@ -10,9 +10,11 @@ class Admin::UsersController < ApplicationController
 	def update
 		@user = User.find_by_login(params[:id])
     if @user.activate!
-      flash[:notice] = "User activated."
+      flash[:success] = 'User %s activated.'
+      flash[:success_item] = [ "#{@user.login}", user_profile_path(@user) ]
     else
-      flash[:error] = "There was a problem activating this user."
+      flash[:error] = 'There was a problem activating the user %s.'
+      flash[:error_item] = [ "#{@user.login}", user_profile_path(@user) ]
     end
     redirect_to :action => 'index'		
 	end

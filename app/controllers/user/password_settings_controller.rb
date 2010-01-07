@@ -8,11 +8,11 @@ class User::PasswordSettingsController < ApplicationController
   # Change password action  
   def create
 		if current_user.change_password!(params[:old_password], params[:password], params[:password_confirmation])
-   		flash[:notice] = "Password successfully updated."
+   		flash[:success] = 'Password successfully updated.'
     	redirect_to user_profile_path(current_user)		
 		else
 			@old_password = nil
-      flash.now[:error] = current_user.errors.on_base || "There was a problem updating your password."
+      flash.now[:error] = current_user.errors.on_base || 'There was a problem updating your password.'
       render :action => 'index'
 		end
 	end

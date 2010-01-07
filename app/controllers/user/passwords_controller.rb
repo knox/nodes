@@ -8,10 +8,10 @@ class User::PasswordsController < ApplicationController
   # Forgot password action
   def create    
     if User.find_for_forget(params[:email])    
-      flash[:notice] = "A password reset link has been sent to your email address."
+      flash[:notice] = 'A password reset link has been sent to your email address.'
       redirect_to root_path
     else
-      flash.now[:notice] = "A password reset link was not sent, you may have enetered an invalid email address."
+      flash.now[:warning] = 'A password reset link was not sent, you may have enetered an invalid email address.'
       render :action => 'new'
     end  
   end
@@ -21,7 +21,7 @@ class User::PasswordsController < ApplicationController
   # Then if everything checks out, shows the password reset fields
   def edit
 		if params[:id].nil?
-			flash[:error] = "The password reset code was missing."
+			flash[:error] = 'The password reset code was missing.'
 			redirect_to root_path
 		end
   end

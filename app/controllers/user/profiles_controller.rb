@@ -22,11 +22,11 @@ class User::ProfilesController < ApplicationController
     success = @user && @user.save
     if success && @user.errors.empty?
       redirect_back_or_default('/')
-      flash[:notice] = "Thanks for signing up! "
-			flash[:notice] += "We're sending you 														an email with your activation code."
+      flash[:notice] = 'Thanks for signing up! '
+			flash[:notice] += 'We\'re sending you an email with your activation code.'
     else
-      flash.now[:error]  = "We couldn't set up that account, sorry.  Please try again, or %s."
-			flash[:error_item] = ["contact us", contact_site]
+      flash.now[:error]  = 'We couldn\'t set up that account, sorry.  Please try again, or %s.'
+			flash[:error_item] = ['contact us', contact_site]
       render :action => 'new'
     end
   end
@@ -39,10 +39,10 @@ class User::ProfilesController < ApplicationController
     @user = current_user
     if @user.update_attributes(:name  => params[:user][:name],
 															 :email => params[:user][:email])
-      flash[:notice] = "Profile updated."
+      flash[:success] = 'Profile updated.'
       redirect_to :action => 'show'
     else
-			flash.now[:error] = "There was a problem updating your profile."
+			flash.now[:error] = 'There was a problem updating your profile.'
       render :action => 'edit'
     end
   end
@@ -51,7 +51,7 @@ class User::ProfilesController < ApplicationController
     @user = current_user
     logout_killing_session!
     @user.destroy  
-    flash[:notice] = "Your account has been deleted."
+    flash[:success] = 'Your account has been deleted.'
     redirect_to root_path
   end
   

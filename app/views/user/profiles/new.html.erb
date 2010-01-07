@@ -16,7 +16,7 @@
   <br/>
 </fieldset>
 <br/>
-<%= f.submit 'Sign up' %>
+<%= f.submit 'Sign up', :disable_with => 'Signing up&hellip;' %>
 <% end %>
 <div id="toolbar">
   <%= link_to 'Log In', new_session_path %>&nbsp;| <%= link_to 'Forgot Password?', forgot_password_path %>

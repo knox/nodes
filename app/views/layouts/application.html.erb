@@ -4,6 +4,7 @@
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title><%= @page_title or APP_CONFIG['settings']['name'] %></title>
     <%= stylesheet_link_tag 'nodes' %>
+    <%= stylesheet_link_tag 'flash' %>
     <%= stylesheet_link_tag 'ujs_sort_helper' %>
     <% if self.controller_name == 'map' %>
     <%= map_layers_includes %>

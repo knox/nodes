@@ -1,7 +1,7 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
 
-  FLASH_NOTICE_KEYS = [:error, :notice, :warning]
+  FLASH_NOTICE_KEYS = [:error, :notice, :warning, :success]
 
   def flash_messages
     return unless messages = flash.keys.select{|k| FLASH_NOTICE_KEYS.include?(k)}

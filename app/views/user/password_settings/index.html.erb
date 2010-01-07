@@ -12,7 +12,7 @@
   	<label for="password_confirmation">Confirm New Password</label>
   	<%= password_field_tag 'password_confirmation', {} %><br />
 
-  <%= submit_tag 'Change Password' %>
+  <%= submit_tag 'Change Password', :disable_with => 'Changing&hellip;' %>
 <% end %>
 <div id="toolbar"></div>
 

@@ -8,7 +8,7 @@
   <br/>
 </fieldset>
 <br/>
-<%= f.submit 'Save' %>
+<%= f.submit 'Save', :disable_with => 'Saving&hellip;' %>
 <% end %>
 <div id="toolbar">
   <%= link_to 'Show Profile', user_profile_path(@user) %>&nbsp;| <%= link_to 'Change Password', user_profile_password_settings_path(@user) %><% if current_user.login != 'admin' %>&nbsp;| <%= link_to 'Delete account', user_profile_path(@user), :confirm => 'Are you sure?', :method => :delete %><%end%>
