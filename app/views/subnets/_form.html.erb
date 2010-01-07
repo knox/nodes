@@ -15,7 +15,7 @@
 <% if logged_in? && current_user.has_role?('admin') %>
 <fieldset>
 	<legend>Owner</legend>
-	<%= f.label :owner, 'Login' %><%= f.collection_select(:user_id, User.list_of_active, :id, :login)  %>
+	<%= f.label :owner, 'Login' %><%= f.collection_select(:user_id, User.all, :id, :login)  %>
 </fieldset>
 <% else %>
 	<%= f.hidden_field :user_id, :value => current_user.id %>
