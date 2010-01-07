@@ -63,8 +63,7 @@
       </div>
     </div>
     <div id="content"<% if self.controller_name == 'map' %> class="map"<%end %>>
-      <%= flash_messages %>
-	  <div id="error"><%= flash[:error] %></div>
+      <div id="error"><%= flash_messages %></div>
       <%= yield %>
     </div>
   </body>
