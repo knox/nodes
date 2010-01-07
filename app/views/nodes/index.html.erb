@@ -25,7 +25,5 @@
 </table>
 <div id="toolbar">
   <%= link_to 'Add node', new_node_path %>
-  <div id="pagination">
-    <%= will_paginate @nodes %>
-  </div>
+  <%= will_paginate @nodes %>
 </div>

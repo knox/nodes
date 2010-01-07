@@ -32,7 +32,5 @@
   <% if !logged_in? %>
   <%= link_to 'Sign Up', signup_path %>
   <% end %>
-  <div id="pagination">
-    <%= will_paginate @users %>
-  </div>
+  <%= will_paginate @users %>
 </div>
