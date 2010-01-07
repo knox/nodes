@@ -9,7 +9,7 @@ class Admin::RolesController < ApplicationController
 
 	def update
 		@user = User.find_by_login(params[:user_id])
-		@roles = (Role.find(params[:user][:role_ids]) if params[:user][:role_ids])
+    @roles = (Role.find(params[:user][:role_ids]) unless params[:user].blank? or params[:user][:role_ids].blank? )
 		@user.roles = (@roles || [])
 		if @user.save
       flash[:notice] = "User roles were successfully updated."
