@@ -223,6 +223,10 @@ ul.navi a {
   height: 1em;
 }
 
+#toolbar #pagination {
+  float: right;
+}
+
 p label {
   display: block;
   float: left;
@@ -266,8 +270,4 @@ p label {
 #errorExplanation ul li {
   font-size: 12px;
   list-style: square;
-}
-
-.pagination {
-  float: right;
 }

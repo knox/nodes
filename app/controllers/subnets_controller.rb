@@ -8,8 +8,15 @@ class SubnetsController < ApplicationController
   
   def index
     respond_to do |format|
-      format.html { @subnets = Subnet.paginate(:page => params[:page], :order => 'name') } # index.html.erb
-      format.xml  { render :xml => Subnet.all(:order => 'name') }
+      format.html { load_sorted_page }
+      format.js { 
+        load_sorted_page
+        render :update do |page|
+          page.replace_html  'table', :partial => 'table'
+          page.replace_html  'pagination', :partial => 'pagination'
+        end
+      }
+      format.xml { render :xml => Subnet.all(:order => 'name') }
     end
   end
   
@@ -81,5 +88,10 @@ class SubnetsController < ApplicationController
     @subnet = Subnet.find_by_name(params[:id])
   end
   
+  def load_sorted_page
+    sort_init 'name'
+    sort_update
+    @subnets = Subnet.paginate(:page => params[:page], :include => :owner, :order => sort_clause) 
+  end
   
 end

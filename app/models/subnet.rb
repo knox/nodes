@@ -8,7 +8,7 @@ class Subnet < ActiveRecord::Base
   
   belongs_to :owner, :class_name => 'User', :foreign_key => 'user_id'
 
-  has_many :nodes, :dependent => :destroy 
+  has_many :nodes, :order => 'name', :dependent => :destroy 
 
   attr :ip_address, true
   

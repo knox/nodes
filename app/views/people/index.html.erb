@@ -1,36 +1,10 @@
 <h1>People</h1>
-<table>
-  <thead>
-    <tr>
-      <th>
-        Login
-      </th>
-      <th>
-        Name
-      </th>
-      <% if logged_in? %>
-      <th>
-        Email
-      </th>
-      <% end %>
-      <th>
-        Registration Date
-      </th>
-      <th>
-        Subnets
-      </th>
-      <th>
-        Nodes
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= render :partial => 'user', :collection => @users %>
-  </tbody>
-</table>
+<div id="table">
+  <%= render :partial => 'table' %>
+</div>
 <div id="toolbar">
   <% if !logged_in? %>
   <%= link_to 'Sign Up', signup_path %>
   <% end %>
-  <%= will_paginate @users %>
+  <div id="pagination"><%= render :partial => 'pagination' %></div>
 </div>

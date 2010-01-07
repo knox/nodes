@@ -11,17 +11,10 @@ class User < ActiveRecord::Base
   strip_attributes!
   
   before_destroy :update_or_destroy_subnets
-  has_many :subnets #, :dependent => :destroy
+  has_many :subnets, :order => 'name' #, :dependent => :destroy
 
-  has_many :nodes, :dependent => :destroy
+  has_many :nodes, :order => 'name', :dependent => :destroy
 
-  def self.list_of_active(page)
-    User.paginate(:page => page,
-      :conditions => ['activated_at IS NOT NULL', true],
-      :order => 'login'
-    )
-  end
-  
   def owns_node?(node_in_question)
     if node_in_question.is_a? Integer
       self.nodes.exists?(:id => node_in_question)
