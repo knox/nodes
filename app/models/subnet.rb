@@ -50,10 +50,12 @@ class Subnet < ActiveRecord::Base
   
   private
     def ip_to_long
-      @addr = IPAddr.new(ip_address)
-      net = @addr.mask(prefix_length)
-      self.ip = net.to_i
-      self.max_hosts = net.max_hosts
+      if !ip_address.blank?
+        @addr = IPAddr.new(ip_address)
+        net = @addr.mask(prefix_length)
+        self.ip = net.to_i
+        self.max_hosts = net.max_hosts
+      end
     end
     
     def valid_subnet

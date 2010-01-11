@@ -57,8 +57,10 @@ class Node < ActiveRecord::Base
   
   private
     def ip_to_long
-      @addr = IPAddr.new(ip_address)
-      self.ip = @addr.to_i      
+      if !ip_address.blank?
+        @addr = IPAddr.new(ip_address)
+        self.ip = @addr.to_i
+      end
     end
 
     def ip_within_subnet
