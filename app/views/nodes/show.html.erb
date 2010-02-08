@@ -17,7 +17,9 @@
   <label>
     Geo Location:
   </label>
-  <%=h [ @node.lat, @node.lng ].compact.join(", ") %>
+  <% if !@node.lat.blank? and !@node.lng.blank? %>
+  <%= @node.lat %>, <%= @node.lng %> <%= link_to '(Map)', map_path + "?zoom=16&lat=#{@node.lat}&lon=#{@node.lng}" %>
+  <% end %>
   <br/>
   <label>
     Position:
