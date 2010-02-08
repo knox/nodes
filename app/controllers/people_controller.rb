@@ -18,9 +18,13 @@ class PeopleController < ApplicationController
 
 	def show
 		@user = User.find_by_login(params[:id])
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @user }
+    if @user
+      respond_to do |format|
+        format.html # show.html.erb
+        format.xml  { render :xml => @user }
+      end
+    else
+      render :file => "#{RAILS_ROOT}/public/404.html", :layout => false, :status => 404
     end
 	end
 

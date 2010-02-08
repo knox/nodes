@@ -21,9 +21,13 @@ class SubnetsController < ApplicationController
   end
   
   def show
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @subnet }
+    if @subnet
+      respond_to do |format|
+        format.html # show.html.erb
+        format.xml  { render :xml => @subnet }
+      end
+    else
+      render :file => "#{RAILS_ROOT}/public/404.html", :layout => false, :status => 404
     end
   end
   
@@ -55,31 +59,39 @@ class SubnetsController < ApplicationController
   end
   
   def update
-    respond_to do |format|
-      if @subnet.update_attributes(params[:subnet])
-        flash[:success] = 'Subnet was successfully updated.'
-        format.html { redirect_to(@subnet) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @subnet.errors, :status => :unprocessable_entity }
+    if @subnet
+      respond_to do |format|
+        if @subnet.update_attributes(params[:subnet])
+          flash[:success] = 'Subnet was successfully updated.'
+          format.html { redirect_to(@subnet) }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @subnet.errors, :status => :unprocessable_entity }
+        end
       end
+    else
+      render :file => "#{RAILS_ROOT}/public/404.html", :layout => false, :status => 404
     end
   end
   
   def destroy
-    if @subnet.has_foreign_nodes? and !current_user.has_role?('admin')
-      flash[:warning] = 'Cannot destroy Subnet: it has foreign nodes within.'
-      respond_to do |format|
-        format.html { redirect_back_or_default(@subnet) }
-        format.xml  { render :xml => flash[:warning], :status => :unprocessable_entity }
+    if @subnet
+      if @subnet.has_foreign_nodes? and !current_user.has_role?('admin')
+        flash[:warning] = 'Cannot destroy Subnet: it has foreign nodes within.'
+        respond_to do |format|
+          format.html { redirect_back_or_default(@subnet) }
+          format.xml  { render :xml => flash[:warning], :status => :unprocessable_entity }
+        end
+      else
+        @subnet.destroy
+        respond_to do |format|
+          format.html { redirect_to(subnets_url) }
+          format.xml  { head :ok }
+        end
       end
     else
-      @subnet.destroy
-      respond_to do |format|
-        format.html { redirect_to(subnets_url) }
-        format.xml  { head :ok }
-      end
+      render :file => "#{RAILS_ROOT}/public/404.html", :layout => false, :status => 404
     end
   end
   

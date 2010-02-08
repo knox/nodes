@@ -34,6 +34,9 @@ ActionController::Routing::Routes.draw do |map|
   map.map 'nodes/georss', :controller => :nodes, :action => :georss
   map.map 'nodes/kml', :controller => :nodes, :action => :kml
   map.map 'nodes/wfs', :controller => :nodes, :action => :wfs
+  map.connect 'nodes/:ip_address', :controller => :nodes, :action => :lookup, 
+    :requirements => { :ip_address => /(?:25[0-5]|(?:2[0-4]|1\d|[1-9])?\d)(?:\.(?:25[0-5]|(?:2[0-4]|1\d|[1-9])?\d)){3}/ },
+    :conditions => { :method => :get }
   map.resources :nodes 
 
   map.map 'map', :controller => 'map'
