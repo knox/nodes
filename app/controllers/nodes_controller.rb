@@ -123,7 +123,7 @@ class NodesController < ApplicationController
       format.js {
         addr = Node.suggest_addr(params[:subnet_id])
         render :update do |page|
-          page.assign "document.getElementById('node_ip_address').value", addr.to_s
+          page.assign "$('node_ip_address').value", addr.to_s
         end
       }
     end

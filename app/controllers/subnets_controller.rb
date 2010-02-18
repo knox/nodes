@@ -100,8 +100,8 @@ class SubnetsController < ApplicationController
       format.js { 
         addr = Subnet.suggest_addr
         render :update do |page|
-          page.assign "document.getElementById('subnet_ip_address').value", addr.to_s
-          page.assign "document.getElementById('subnet_prefix_length').value", addr.prefix_len
+          page.assign "$('subnet_ip_address').value", addr.to_s
+          page.assign "$('subnet_prefix_length').value", addr.prefix_len
         end
       }
     end
