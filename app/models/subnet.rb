@@ -41,11 +41,7 @@ class Subnet < ActiveRecord::Base
   end
 
   def has_foreign_nodes?
-    self.nodes.find(:all, 
-          :conditions => [ 'user_id != ?', self.id ],
-          :select => 'user_id').each { |node|
-      return true if node.owner != self
-    }  
+    Node.exists?([ 'subnet_id = ? AND user_id != ?', self.id, self.user_id ])
   end
   
   def self.suggest_addr
