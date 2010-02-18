@@ -10,6 +10,7 @@ It's development has just started and therefore most of the features are yet lis
  
 === Features
 * IP Address validation to ensure unique, separate addresses
+* Auto-generation/proposal of IP addresses for Subnets and Nodes
 * Automatic geo location lookup for node based on given postal address
 * Map displaying nodes
   * Base Layer from OpenStreetMap.org
@@ -23,7 +24,6 @@ It's development has just started and therefore most of the features are yet lis
 === Planned Features
 * "Click here to join Freifunk"-Wizard for users with very limited technical knowledge
   * Suggest existing nearby subnet based on geo location
-  * Auto-generation/proposal of IP addresses 
 * Messaging system (allow sending emails to people without exposing their email to the public)
 * Search function
 * Tags (acts_as_taggable?)

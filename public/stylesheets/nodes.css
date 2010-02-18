@@ -104,7 +104,7 @@ form label {
   float: left;
   width: 100px;
   text-align: right;
-  padding-right: 1em;
+  padding-right: 12px;
   padding-bottom: 1em;
 }
 
@@ -123,6 +123,12 @@ form textarea {
 /* TODO */
 form small {
   margin-left: 114px;
+}
+
+form button.indent_ajax_button {
+  margin-left: 112px;
+  margin-top: 0.6em;
+  display:none;
 }
 
 br {

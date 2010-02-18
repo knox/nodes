@@ -117,6 +117,17 @@ class NodesController < ApplicationController
       render :file => "#{RAILS_ROOT}/public/404.html", :layout => false, :status => 404
     end
   end
+
+  def suggest_ip
+    respond_to do |format|
+      format.js {
+        addr = Node.suggest_addr(params[:subnet_id])
+        render :update do |page|
+          page.assign "document.getElementById('node_ip_address').value", addr.to_s
+        end
+      }
+    end
+  end
   
   private
     def find_node

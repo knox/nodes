@@ -4,7 +4,7 @@ development:
     domain: localhost:3000
     session_key: _freifunk_nodes
     secret: 1138371c71fe2f4f6769090e9fa0d7314b4febcc1c1966f9c83e16a3c880e0ca396cbb37e9ce53bbefc2417cb7363d7127200d51f16b9aeda033dbc3600c63fc
-    admin_email: info@freifunk-hannover.de
+    admin_email: info@yourdomain.com
     timezone: Berlin
   mail:
     method: smtp
@@ -23,3 +23,7 @@ development:
     lon: 9.738435
     lat: 52.374394
     zoom: 13
+  wizard:
+    network: 10.0.0.0/16
+    prefixlen: 25
+    

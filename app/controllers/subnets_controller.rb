@@ -95,6 +95,18 @@ class SubnetsController < ApplicationController
     end
   end
   
+  def suggest_ip
+    respond_to do |format|
+      format.js { 
+        addr = Subnet.suggest_addr
+        render :update do |page|
+          page.assign "document.getElementById('subnet_ip_address').value", addr.to_s
+          page.assign "document.getElementById('subnet_prefix_length').value", addr.prefix_len
+        end
+      }
+    end
+  end
+  
   private
   def find_subnet
     @subnet = Subnet.find_by_name(params[:id])

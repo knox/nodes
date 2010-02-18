@@ -55,6 +55,18 @@ class Node < ActiveRecord::Base
     name
   end
   
+  def self.suggest_addr(subnet_id)
+    net = Subnet.find(subnet_id)
+    existing = Array.new 
+    Node.find(:all, :select => 'ip', :conditions => [ 'subnet_id = ?', net.id ], :order => 'ip ASC').each { |node|
+      existing.push(node.ip)
+    }
+    for ip in (net.ip+1)..(net.ip + net.max_hosts)
+      break unless existing.include?(ip)
+    end
+    IPAddr.new_itoh(ip)
+  end
+
   private
     def ip_to_long
       if !ip_address.blank?

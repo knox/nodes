@@ -31,6 +31,7 @@
   <%= f.label :subnet %><%= collection_select :node, :subnet_id, Subnet.all, :id, :name %>
   <br/>
   <%= f.label :ip_address %><%= f.text_field :ip_address %>
+  <button id="node_ip_suggest" class="indent_ajax_button">Suggest IP Address</button>
 </fieldset>
 <% if logged_in? && current_user.has_role?('admin') %>
 <fieldset>
@@ -43,3 +44,4 @@
 <br/>
 <%= f.submit 'Save', :disable_with => "Saving&hellip;" %>
 <% end %>
+<%= javascript_include_tag 'wizard' %>

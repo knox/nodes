@@ -44,6 +44,17 @@ module IPFoo
     max - i
   end
 
+  def subnets(prefixlen)
+    i = self.to_i
+    max = self.bcast.to_i - 1 
+    n, j = 0, 32 - prefixlen - 1
+    n, j = n + (2 ** j), j - 1 while j > 0
+    while i < max
+      yield IPAddr.new_itoh(i).mask(prefixlen)
+      i += n + 1
+    end
+  end
+  
 end
 
 class IPAddr

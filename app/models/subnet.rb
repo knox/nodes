@@ -48,6 +48,17 @@ class Subnet < ActiveRecord::Base
     }  
   end
   
+  def self.suggest_addr
+    net = IPAddr.new(APP_CONFIG['wizard']['network'])
+    available = Array.new
+    net.subnets(APP_CONFIG['wizard']['prefixlen']) { |subnet| available.push(subnet) }
+    existing = Subnet.find(:all, :select => 'ip', :conditions => [ 'ip >= ? AND ip < ?', net.to_i, net.bcast.to_i ])
+    existing.each { |subnet|
+      available.delete_if { |x| x.to_i == subnet.ip }
+    }
+    available[rand(available.length)]
+  end
+  
   private
     def ip_to_long
       if !ip_address.blank?
