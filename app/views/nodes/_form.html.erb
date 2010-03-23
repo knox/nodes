@@ -10,7 +10,7 @@
 </fieldset>
 <fieldset>
   <legend>
-    Location
+    Address
   </legend>
   <%= f.label :street %><%= f.text_field :street %>
   <br/>
@@ -18,11 +18,17 @@
   <br/>
   <%= f.label :city %><%= f.text_field :city %>
   <br/>
-  <%= f.label :lat %><%= f.text_field :lat %>
-  <br/>
-  <%= f.label :lng %><%= f.text_field :lng %>
-  <br/>
   <%= f.label :position %><%= f.text_field :position %>
+</fieldset>
+<fieldset>
+  <legend>
+    Geo Location
+  </legend>
+  <%= f.label :lat, 'Latitude' %><%= f.text_field :lat %>
+  <br/>
+  <%= f.label :lng, 'Longitude' %><%= f.text_field :lng %>
+  <br/>
+  <button id="node_geocoder" style="display: none;" class="indent_ajax_button">Lookup from Address</button><%= image_tag 'spinner.gif', :style => 'display:none;', :class => 'spinner', :id => 'node_geocoder_spinner' %>
 </fieldset>
 <fieldset>
   <legend>
@@ -31,7 +37,8 @@
   <%= f.label :subnet %><%= collection_select :node, :subnet_id, Subnet.all, :id, :name %>
   <br/>
   <%= f.label :ip_address %><%= f.text_field :ip_address %>
-  <button id="node_ip_suggest" class="indent_ajax_button">Suggest IP Address</button>
+  <br />
+  <button id="node_ip_suggest" style="display: none;" class="indent_ajax_button">Suggest IP Address</button><%= image_tag 'spinner.gif', :style => 'display:none;', :class => 'spinner', :id => 'node_ip_suggest_spinner' %>
 </fieldset>
 <% if logged_in? && current_user.has_role?('admin') %>
 <fieldset>

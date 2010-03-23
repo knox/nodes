@@ -14,8 +14,6 @@ class Node < ActiveRecord::Base
   attr :ip_address, true
   attr_accessible :name, :street, :zip, :city, :lat, :lng, :position, :description, :ip_address, :subnet_id, :user_id
 
-  validate :geocode_address, :unless => Proc.new { |node| node.street.blank? or (!node.lat.blank? and !node.lng.blank?) }
-
   validates_presence_of :name 
   validates_format_of :name, :with => /\A[\w\-]*\z/, 
     :message => 'must contain only letters, numbers, dashes and underscores', 
@@ -91,19 +89,4 @@ class Node < ActiveRecord::Base
       end      
     end
     
-    def geocode_address
-      address = [ street, [ zip, city ].compact.join(" ") ].compact.join(", ")
-      logger.debug "Node:: Looking up geo location for '#{address}'"
-      geo = Geokit::Geocoders::MultiGeocoder.geocode(address, :bias => 'de', :lang => 'de')
-      if !geo.success
-        errors.add(:address, "Couldn't find geo location for this address")
-      else
-        if geo.all.size > 1
-          errors.add(:address, "Found multiple geo locations for this address. Please be more accurate.")
-        else
-          self.lat, self.lng = geo.lat,geo.lng if geo.success && geo.all.size
-        end
-      end
-    end
-  
 end

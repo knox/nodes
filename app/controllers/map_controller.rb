@@ -43,5 +43,40 @@ class MapController < ApplicationController
     end
     
   end
+
+  def geocode
+
+    street = params[:street].blank? ? nil : params[:street]
+    zip = params[:zip].blank? ? nil : params[:zip]
+    city = params[:city].blank? ? APP_CONFIG['geokit']['city'] : params[:city]
+    
+    address = [ street, [ zip, city ].compact.join(" ") ].compact.join(", ")
+
+    respond_to do |format|
+      format.js {
+        render :update do |page|
+
+          logger.debug "Map::geocode Looking up geo location for '#{address}'"
+          @location = Geokit::Geocoders::MultiGeocoder.geocode(address, :bias => 'de', :lang => 'de')
+  
+          page.assign "$('node_geocoder').disabled", false
+          page.toggle 'node_geocoder_spinner'
+
+          if !@location.success
+            page.alert 'Couldn\'t find geo location for this address'
+          else
+            if @location.all.size > 1
+              page.alert 'Couldn\'t find unambiguous geo location for this address'
+            else
+              page.assign "$('node_lat').value", @location.lat
+              page.assign "$('node_lng').value", @location.lng
+            end
+          end
+          
+        end
+      }
+    end
+
+  end
   
 end

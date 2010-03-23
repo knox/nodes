@@ -127,8 +127,11 @@ form small {
 
 form button.indent_ajax_button {
   margin-left: 112px;
-  margin-top: 0.6em;
-  display:none;
+  float: left;
+}
+form .spinner  {
+  margin-top: 0.1em;
+  margin-left: 0.2em;
 }
 
 br {

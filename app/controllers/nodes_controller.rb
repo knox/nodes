@@ -124,6 +124,8 @@ class NodesController < ApplicationController
         addr = Node.suggest_addr(params[:subnet_id])
         render :update do |page|
           page.assign "$('node_ip_address').value", addr.to_s
+          page.assign "$('node_ip_suggest').disabled", false
+          page.toggle 'node_ip_suggest_spinner'
         end
       }
     end

@@ -11,7 +11,7 @@ It's development has just started and therefore most of the features are yet lis
 === Features
 * IP Address validation to ensure unique, separate addresses
 * Auto-generation/proposal of IP addresses for Subnets and Nodes
-* Automatic geo location lookup for node based on given postal address
+* Geo location lookup for node based on given postal address
 * Map displaying nodes
   * Base Layer from OpenStreetMap.org
   * Main Layer displays data from the node database

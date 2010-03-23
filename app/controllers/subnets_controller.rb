@@ -102,6 +102,8 @@ class SubnetsController < ApplicationController
         render :update do |page|
           page.assign "$('subnet_ip_address').value", addr.to_s
           page.assign "$('subnet_prefix_length').value", addr.prefix_len
+          page.assign "$('subnet_ip_suggest').disabled", false
+          page.toggle 'subnet_ip_suggest_spinner'
         end
       }
     end
