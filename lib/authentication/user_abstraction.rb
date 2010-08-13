@@ -61,7 +61,7 @@ module Authentication
 					yield :notice, "Your account has already been activated. You can log in below", "login_path"
 				when u
 					u.activate!
-					path = ((u.user_type == "OpenidUser") ? "login_with_openid_path" : "login_path")
+					path = "login_path"
 					yield :notice, "Signup complete! Please sign in to continue.", path
 				end
 			end
